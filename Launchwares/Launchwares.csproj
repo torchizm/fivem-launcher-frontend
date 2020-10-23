@@ -70,8 +70,7 @@
     <ManifestCertificateThumbprint>E053F32D5370C3AD08D4085633C53136A1934137</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>
-    </ManifestKeyFile>
+    <ManifestKeyFile>Launchwares.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -115,7 +114,7 @@
       <HintPath>..\packages\DiscordRichPresence.1.0.150\lib\net35\DiscordRPC.dll</HintPath>
     </Reference>
     <Reference Include="LaunchwaresCore">
-      <HintPath>..\..\LaunchwaresCore\LaunchwaresCore\bin\Debug\LaunchwaresCore.dll</HintPath>
+      <HintPath>..\..\launchwarescslibrary\LaunchwaresCore\bin\Debug\LaunchwaresCore.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
@@ -524,6 +523,7 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Launchwares.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
     <None Include="Properties\Settings.settings">
