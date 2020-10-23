@@ -1,0 +1,165 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <system:String x:Key="application.title">Nom du Serveur</system:String>
+    <system:String x:Key="application.close">Fermer</system:String>
+    <system:String x:Key="application.minimize">Minimiser</system:String>
+    <system:String x:Key="application.settings">Paramètres</system:String>
+    <system:String x:Key="application.mainmenu">Menu Principal</system:String>
+    <system:String x:Key="application.maintenance">En Maintenance</system:String>
+    <system:String x:Key="application.send">Envoyer</system:String>
+    <system:String x:Key="application.areyousure">Êtes-vous sûr ?</system:String>
+    <system:String x:Key="application.yes">Oui</system:String>
+    <system:String x:Key="application.no">Non</system:String>
+    <system:String x:Key="application.internetoff">La connexion Internet n'a pas pu être établie. S'il vous plait, vérifiez votre connexion internet.</system:String>
+
+    <system:String x:Key="loading.loading">Chargement</system:String>
+    <system:String x:Key="loading.connectingservices">Connexion aux services de lancement</system:String>
+    <system:String x:Key="loading.gettinguniquetoken">Obtenir un jeton unique</system:String>
+    <system:String x:Key="loading.connectingdiscord">Connexion à Discord</system:String>
+    <system:String x:Key="loading.done">Nous avons Terminé, Chargement du Launcher !</system:String>
+    <system:String x:Key="loading.coffee">Fait une tasse de café</system:String>
+    <system:String x:Key="loading.drinkcoffee">Boit une gorgée de café</system:String>
+
+    <system:String x:Key="date.now">maintenant</system:String>
+    <system:String x:Key="date.seconds">il y a quelques instants</system:String>
+    <system:String x:Key="date.minutes">il y a quelques minutes</system:String>
+    <system:String x:Key="date.hours">il y a des heures</system:String>
+    <system:String x:Key="date.days">il y a quelques jours</system:String>
+    <system:String x:Key="date.week">semaine</system:String>
+    <system:String x:Key="date.weeks">il y a des semaines</system:String>
+    <system:String x:Key="date.months">il y a des mois</system:String>
+    <system:String x:Key="date.years">il y a des années</system:String>
+
+    <system:String x:Key="error.error">Une erreur s'est produite:</system:String>
+    <system:String x:Key="error.0">Aucune</system:String>
+    <system:String x:Key="error.1">Inconnue</system:String>
+    <system:String x:Key="error.2">Vous n'êtes pas dans la Whitelist</system:String>
+    <system:String x:Key="error.3">Vous êtes banni du serveur</system:String>
+    <system:String x:Key="error.401">Jeton de lancement non valide. Veuillez nous contacter https://launchwares.com/discord</system:String>
+    <system:String x:Key="error.403">Pas assez de permission</system:String>
+    <system:String x:Key="error.404">Serveur Introuvable</system:String>
+    <system:String x:Key="error.406">Le Launcher est en Maintenance</system:String>
+    <system:String x:Key="error.500">Le Serveur est en Maintenance</system:String>
+
+    <system:String x:Key="mainwindow.administration">Administration</system:String>
+    <system:String x:Key="mainwindow.updates">Mises à jour</system:String>
+    <system:String x:Key="mainwindow.rules">Règles</system:String>
+    <system:String x:Key="mainwindow.posts">Postes</system:String>
+    <system:String x:Key="mainwindow.username">Nom d'Utilisateur</system:String>
+    <system:String x:Key="mainwindow.nousers">Personne en ligne pour le moment! :(</system:String>
+
+    <system:String x:Key="leftmenu.menu">MENU</system:String>
+    <system:String x:Key="leftmenu.home">Accueil</system:String>
+    <system:String x:Key="leftmenu.updates">Mises à jour</system:String>
+    <system:String x:Key="leftmenu.posts">Postes</system:String>
+    <system:String x:Key="leftmenu.admin">ADMIN</system:String>
+    <system:String x:Key="leftmenu.serverstats">Analyse du Serveur</system:String>
+    <system:String x:Key="leftmenu.players">Joueurs</system:String>
+    <system:String x:Key="leftmenu.anticheat">Anticheat</system:String>
+
+    <system:String x:Key="popupmenu.myprofile">Mon profil</system:String>
+    <system:String x:Key="popupmenu.options">Options</system:String>
+    <system:String x:Key="popupmenu.closeprogram">Fermer le Programme</system:String>
+
+    <system:String x:Key="options.language">Langue</system:String>
+    <system:String x:Key="options.english">English</system:String>
+    <system:String x:Key="options.english-en">English, USA</system:String>
+    <system:String x:Key="options.turkish">Turkish</system:String>
+    <system:String x:Key="options.turkish-tr">Türkçe</system:String>
+    <system:String x:Key="options.german">German</system:String>
+    <system:String x:Key="options.german-de">Deutsche</system:String>
+    <system:String x:Key="options.french">Français</system:String>
+    <system:String x:Key="options.french-fr">Français</system:String>
+
+    <system:String x:Key="mainmenu.ingame">En Jeu</system:String>
+    <system:String x:Key="mainmenu.ping">Ping</system:String>
+    <system:String x:Key="mainmenu.serverstats">Statistiques du Serveur</system:String>
+    <system:String x:Key="mainmenu.whatsnew">Quoi de neuf ?</system:String>
+    <system:String x:Key="mainmenu.whatpeoplethinking">Ce que pensent les gens ?</system:String>
+    <system:String x:Key="mainmenu.gtavlocation">Emplacement de GTA V</system:String>
+    <system:String x:Key="mainmenu.fivemlocatin">Emplacement de FIVEM </system:String>
+    <system:String x:Key="mainmenu.play">Jouer</system:String>
+    <system:String x:Key="mainmenu.description">Avec notre nouvelle fonctionnalité, vous pouvez configurer un pack de sons de qualité !</system:String>
+    <system:String x:Key="mainmenu.inspect">INSPECTER</system:String>
+    <system:String x:Key="mainmenu.nowhitelist">Vous n'êtes pas Whitelist.</system:String>
+    <system:String x:Key="mainmenu.selectgtavlocation">Choisir l'Emplacemnt de GTA V.</system:String>
+    <system:String x:Key="mainmenu.selectfivemlocation">Choisir l'Emplacemnt de fivem.</system:String>
+    <system:String x:Key="mainmenu.nogtavatlocation">Impossible de trouver GTA V, vérifiez votre emplacement.</system:String>
+    <system:String x:Key="mainmenu.nofivematlocation">Impossible de trouver FiveM, vérifiez votre emplacement.</system:String>
+
+    <system:String x:Key="moods.online">En Ligne</system:String>
+    <system:String x:Key="moods.away">Absents</system:String>
+    <system:String x:Key="moods.invisible">Invisible</system:String>
+
+    <system:String x:Key="userspecs.sendmessage">Envoyez un message</system:String>
+    <system:String x:Key="userspecs.report">Report</system:String>
+
+    <system:String x:Key="report.title">Titre</system:String>
+    <system:String x:Key="report.content">Détails...</system:String>
+    <system:String x:Key="report.send">Envoyer</system:String>
+    <system:String x:Key="report.ok">Je vous remercie pour votre rapport. Nous vous contacterons dès que possible. Amusez vous !</system:String>
+
+    <system:String x:Key="report.category1">Discours haineux</system:String>
+    <system:String x:Key="report.category2">Contenu offensant</system:String>
+    <system:String x:Key="report.category3">Piratage &amp; Crosshair</system:String>
+    <system:String x:Key="report.category4">Abus de Bug</system:String>
+
+    <system:String x:Key="updates.noupdates">Il n'y a rien pour le moment ! :(</system:String>
+    <system:String x:Key="updates.description">Mise à jour de la description bla bla bla...</system:String>
+    <system:String x:Key="updates.send">Envoyer</system:String>
+
+    <system:String x:Key="rules.norules">Il n'y a rien pour le moment ! :(</system:String>
+    <system:String x:Key="rules.rule">Règle</system:String>
+    <system:String x:Key="rules.send">Envoyer</system:String>
+
+    <system:String x:Key="posts.whatyouthink">Que pense tu ?</system:String>
+    <system:String x:Key="posts.publish">Publier</system:String>
+    <system:String x:Key="posts.delete">Supprimer</system:String>
+    <system:String x:Key="posts.placeholder">Que pense tu ?</system:String>
+    <system:String x:Key="posts.share">Partager</system:String>
+    <system:String x:Key="posts.notpublishedyet">Pas encore publié</system:String>
+
+    <system:String x:Key="userpage.profile">Profil de l'utilisateur</system:String>
+    <system:String x:Key="userpage.posts">Partager</system:String>
+
+    <system:String x:Key="statistics.timescale">Statistique</system:String>
+    <system:String x:Key="statistics.playerstats">Statistiques des Joueurs</system:String>
+    <system:String x:Key="statistics.updatestats">Mettre à jour les statistiques</system:String>
+    <system:String x:Key="statistics.cheatstats">Statistiques de triche</system:String>
+    <system:String x:Key="statistics.usercount">Nombre d'utilisateurs</system:String>
+    <system:String x:Key="statistics.totaldailylogin">Nombre total de connexions quotidiennes</system:String>
+    <system:String x:Key="statistics.updates">Mettre à jour</system:String>
+    <system:String x:Key="statistics.cheats">Nombre de Cheats</system:String>
+    <system:String x:Key="statistics.daily">Quotidien</system:String>
+    <system:String x:Key="statistics.weekly">Hebdomadaire</system:String>
+    <system:String x:Key="statistics.monthly">Mensuelle</system:String>
+    
+    <system:String x:Key="register.register">S'INSCRIRE</system:String>
+    <system:String x:Key="register.about">Nous n'avons pas pu nous connecter à Discord. Nous devons donc créer un profil manuellement. Désolé pour ça.</system:String>
+    <system:String x:Key="register.important">Remplir correctement cette partie est une partie très importante pour que vous puissiez entrer dans le jeu. Cliquez sur moi si vous ne savez pas où la trouver !</system:String>
+    <system:String x:Key="register.username">Nom d'utilisateur Discord</system:String>
+    <system:String x:Key="register.uid">Discord ID</system:String>
+    <system:String x:Key="register.submit">COMMENCER À UTILISER</system:String>
+    <system:String x:Key="register.namelessthan40">Le nom d'utilisateur doit comporter moins de 40 caractères</system:String>
+    <system:String x:Key="register.uidmustbenumber">L'ID Discord doit être un numéro</system:String>
+    <system:String x:Key="register.uidmustbe18">L'ID Discord doit comporter 18 caractères</system:String>
+    <system:String x:Key="register.uidistaken">Ce Joueur existe déjà</system:String>
+    <system:String x:Key="register.pleasefilleverything">Merci de compléter tous les champs</system:String>
+
+    <system:String x:Key="players.permission">Autorisation</system:String>
+    <system:String x:Key="players.search">Chercher...</system:String>
+    <system:String x:Key="players.player">Joueurs</system:String>
+    <system:String x:Key="players.tier1">VIP de niveau 1</system:String>
+    <system:String x:Key="players.tier2">VIP de niveau 2</system:String>
+    <system:String x:Key="players.tier3">VIP de niveau 3</system:String>
+    <system:String x:Key="players.tier4">VIP de niveau 4</system:String>
+    <system:String x:Key="players.guider">Guide</system:String>
+    <system:String x:Key="players.moderator">Modérateur</system:String>
+    <system:String x:Key="players.owner">Fondateur</system:String>
+    <system:String x:Key="players.unknown">Compte Supprimé</system:String>
+
+    <system:String x:Key="anticheat.cheatdetected">Cheat détectée %CheatName%</system:String>
+    <system:String x:Key="anticheat.information">Oh non! Nous avons détecté un Cheat. Je ne peux pas croire que vous Cheate ! Malheureusement, nous avons publié vos données Cheat dans notre base de données et bloqué le Cheat. Nous espérons que cela ne se reproduira plus.</system:String>
+</ResourceDictionary>

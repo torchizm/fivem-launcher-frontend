@@ -1,0 +1,119 @@
+﻿<UserControl x:Class="Launchwares.CustomElements.BigUpdateBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:CustomUserControls="clr-namespace:Launchwares.CustomElements" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d">
+    <Border Height="Auto"
+            Background="{StaticResource White}"
+            Style="{StaticResource Update}"
+            CornerRadius="8 8 8 8"
+            Margin="0 16 0 16">
+
+        <materialDesign:Transitioner x:Name="TransitionContainer"
+                                     SelectedIndex="0"
+                                     AutoApplyTransitionOrigins="True">
+
+            <materialDesign:TransitioningContent>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Button x:Name="DeleteButton"
+                            Height="24" Width="24"
+                            Grid.Column="1"
+                            Style="{StaticResource MaterialDesignFloatingActionButton}"
+                            Background="{StaticResource Tertiary}"
+                            BorderBrush="{StaticResource Secondary}"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Margin="12" Cursor="Hand"
+                            Click="DeleteButton_Click"
+                            Panel.ZIndex="99">
+                        <materialDesign:PackIcon
+                            Kind="Delete"
+                            Height="16"
+                            Width="16" />
+                    </Button>
+
+                    <Border CornerRadius="8 0 0 8">
+                        <Border.Background>
+                            <ImageBrush x:Name="PhotoSourceText"/>
+                        </Border.Background>
+                    </Border>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold"
+                                       x:Name="TitleText"
+                                       TextWrapping="Wrap"
+                                       Foreground="{StaticResource Black}"
+                                       FontSize="14"
+                                       TextAlignment="Left"
+                                       Margin="8"/>
+                            <TextBlock x:Name="DescriptionText"
+                               TextWrapping="Wrap"
+                               Margin="8 0 8 0"
+                               Foreground="{StaticResource Black}">
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal"
+                                    Margin="8" HorizontalAlignment="Right">
+                            <TextBlock x:Name="PublisherText"
+                                       Foreground="Gray"
+                                       FontSize="10"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"/>
+                            <Ellipse Width="3"
+                                     Height="3"
+                                     Fill="Gray"
+                                     HorizontalAlignment="Left"
+                                     VerticalAlignment="Center"
+                                     Margin="4"/>
+                            <TextBlock x:Name="DateText"
+                                       Foreground="Gray"
+                                       FontSize="10"
+                                       HorizontalAlignment="Left"
+                                       VerticalAlignment="Center"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </materialDesign:TransitioningContent>
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe/>
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <Grid>
+                    <Grid Background="#ff0000" Opacity="0.8"/>
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock Text="{StaticResource application.areyousure}" VerticalAlignment="Top" HorizontalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="18" Margin="8"/>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                            <Button Click="YesButton_Click" Width="128" Height="36" Content="{StaticResource application.yes}" Margin="8" Background="{StaticResource Tertiary}" BorderBrush="Transparent"/>
+                            <Button Click="NoButton_Click" Width="128" Height="36" Content="{StaticResource application.no}" Background="{StaticResource Tertiary}" BorderBrush="Transparent" Margin="8"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </materialDesign:TransitionerSlide>
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe/>
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <Grid>
+                    <Grid Background="#ff0000" Opacity="0.8"/>
+                    <materialDesign:PackIcon Kind="DeleteEmpty"
+                                             Width="64"
+                                             Height="64"
+                                             Foreground="White"
+                                             VerticalAlignment="Center"
+                                             HorizontalAlignment="Center"/>
+                </Grid>
+            </materialDesign:TransitionerSlide>
+        </materialDesign:Transitioner>
+    </Border>
+</UserControl>

@@ -1,0 +1,198 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+    
+    <system:String x:Key="application.title">Server Name</system:String>
+    <system:String x:Key="application.close">Kapat</system:String>
+    <system:String x:Key="application.minimize">Küçült</system:String>
+    <system:String x:Key="application.settings">Ayarlar</system:String>
+    <system:String x:Key="application.mainmenu">Ana Menü</system:String>
+    <system:String x:Key="application.maintenance">Bakımda</system:String>
+    <system:String x:Key="application.send">Gönder</system:String>
+    <system:String x:Key="application.areyousure">Emin misiniz?</system:String>
+    <system:String x:Key="application.yes">Evet</system:String>
+    <system:String x:Key="application.no">Hayır</system:String>
+    <system:String x:Key="application.internetoff">İnternet bağlantısı kurulamadı. Lütfen internet bağlantınızı kontrol edin.</system:String>
+
+    <system:String x:Key="loading.loading">Yükleniyor</system:String>
+    <system:String x:Key="loading.connectingservices">Launcher hizmetlerine bağlanılıyor</system:String>
+    <system:String x:Key="loading.gettinguniquetoken">Benzersiz anahtar üretiliyor</system:String>
+    <system:String x:Key="loading.connectingdiscord">Discord'a bağlanılıyor</system:String>
+    <system:String x:Key="loading.done">Hazırız, başlatıcı yükleniyor!</system:String>
+    <system:String x:Key="loading.coffee">Bir fincan kahve yapılıyor</system:String>
+    <system:String x:Key="loading.drinkcoffee">Bir yudum kahve içiliyor</system:String>
+
+    <system:String x:Key="date.now">şimdi</system:String>
+    <system:String x:Key="date.seconds">saniye önce</system:String>
+    <system:String x:Key="date.minutes">dakika önce</system:String>
+    <system:String x:Key="date.hours">saat önce</system:String>
+    <system:String x:Key="date.days">gün önce</system:String>
+    <system:String x:Key="date.week">hafta</system:String>
+    <system:String x:Key="date.weeks">hafta önce</system:String>
+    <system:String x:Key="date.months">ay önce</system:String>
+    <system:String x:Key="date.years">yıl önce</system:String>
+
+    <system:String x:Key="error.error">Bir hata oldu:</system:String>
+    <system:String x:Key="error.0">Yok</system:String>
+    <system:String x:Key="error.1">Bilinmiyor</system:String>
+    <system:String x:Key="error.2">Whitelist yetkiniz yok.</system:String>
+    <system:String x:Key="error.3">Bu sunucunun karalistesinde olduğunuz için oyuna giremessiniz.</system:String>
+    <system:String x:Key="error.401">Geçersiz launcher tokeni. Lütfen https://launchwares.com/discord adresinden iletişime geçin.</system:String>
+    <system:String x:Key="error.403">Yetkiniz yok.</system:String>
+    <system:String x:Key="error.404">Sunucu bulunamadı.</system:String>
+    <system:String x:Key="error.406">Launcher şuanda bakımda.</system:String>
+    <system:String x:Key="error.500">Sunucu şuanda bakımda.</system:String>
+
+    <system:String x:Key="mainwindow.administration">Yönetim</system:String>
+    <system:String x:Key="mainwindow.updates">Güncellemeler</system:String>
+    <system:String x:Key="mainwindow.rules">Kurallar</system:String>
+    <system:String x:Key="mainwindow.posts">Paylaşımlar</system:String>
+    <system:String x:Key="mainwindow.username">Kullanıcı Adı</system:String>
+    <system:String x:Key="mainwindow.nousers">Şuanda hiç kimse yok! :(</system:String>
+
+    <system:String x:Key="leftmenu.menu">MENÜ</system:String>
+    <system:String x:Key="leftmenu.home">Ana Menü</system:String>
+    <system:String x:Key="leftmenu.updates">Güncellemeler</system:String>
+    <system:String x:Key="leftmenu.posts">Paylaşımlar</system:String>
+    <system:String x:Key="leftmenu.admin">MODERASYON</system:String>
+    <system:String x:Key="leftmenu.serverstats">Sunucu İstatistikleri</system:String>
+    <system:String x:Key="leftmenu.players">Oyuncular</system:String>
+    <system:String x:Key="leftmenu.anticheat">Anticheat</system:String>
+
+    <system:String x:Key="popupmenu.myprofile">Profilim</system:String>
+    <system:String x:Key="popupmenu.options">Ayarlar</system:String>
+    <system:String x:Key="popupmenu.closeprogram">Programı Kapat</system:String>
+
+    <system:String x:Key="options.language">Dil Seçenekleri</system:String>
+    <system:String x:Key="options.utilities">Ek Seçenekler</system:String>
+    <system:String x:Key="options.english">İngilizce</system:String>
+    <system:String x:Key="options.english-en">English, USA</system:String>
+    <system:String x:Key="options.turkish">Türkçe</system:String>
+    <system:String x:Key="options.turkish-tr">Türkçe</system:String>
+    <system:String x:Key="options.german">Almanca</system:String>
+    <system:String x:Key="options.german-de">Deutsche</system:String>
+    <system:String x:Key="options.french">Fransızca</system:String>
+    <system:String x:Key="options.french-fr">Français</system:String>
+
+    <system:String x:Key="mainmenu.ingame">İçeride</system:String>
+    <system:String x:Key="mainmenu.ping">Ping</system:String>
+    <system:String x:Key="mainmenu.serverstats">Sunucu Durumu</system:String>
+    <system:String x:Key="mainmenu.whatsnew">Neler Yeni?</system:String>
+    <system:String x:Key="mainmenu.whatpeoplethinking">İnsanlar Ne Düşünüyor?</system:String>
+    <system:String x:Key="mainmenu.gtavlocation">GTA V LOKASYONU</system:String>
+    <system:String x:Key="mainmenu.fivemlocatin">FIVEM LOKASYONU</system:String>
+    <system:String x:Key="mainmenu.play">OYNA</system:String>
+    <system:String x:Key="mainmenu.description">Yeni sistemimizle birlikte oyununuza kalite katacak ses paketlerini isteğinize özel kurabilirsiniz!</system:String>
+    <system:String x:Key="mainmenu.inspect">İNCELE</system:String>
+    <system:String x:Key="mainmenu.nowhitelist">Bu sunucuda oynamak için whitelist yetkiniz yok.</system:String>
+    <system:String x:Key="mainmenu.selectgtavlocation">GTA V Lokasyonunu seçiniz.</system:String>
+    <system:String x:Key="mainmenu.selectfivemlocation">FIVEM Lokasyonunu seçiniz.</system:String>
+    <system:String x:Key="mainmenu.nogtavatlocation">Seçtiğiniz konumda GTA V bulunamadı! Lütfen tekrar deneyiniz.</system:String>
+    <system:String x:Key="mainmenu.nofivematlocation">Seçtiğiniz konumda FiveM bulunamadı! Lütfen tekrar deneyiniz.</system:String>
+
+    <system:String x:Key="settings.languageselector">Dil:</system:String>
+    <system:String x:Key="settings.language1">Türkçe (TR)</system:String>
+    <system:String x:Key="settings.language2">İngilizce (US)</system:String>
+    <system:String x:Key="settings.notificationsselector">Mesaj Bildirimleri:</system:String>
+    <system:String x:Key="settings.save">Kaydet</system:String>
+    
+    <system:String x:Key="moods.online">Çevrimiçi</system:String>
+    <system:String x:Key="moods.away">Rahatsız Etmeyin</system:String>
+    <system:String x:Key="moods.invisible">Görünmez</system:String>
+
+    <system:String x:Key="userspecs.sendmessage">Mesaj Gönder</system:String>
+    <system:String x:Key="userspecs.report">Şikayet Et</system:String>
+
+    <system:String x:Key="report.title">Başlık</system:String>
+    <system:String x:Key="report.content">İçerik ve detaylar...</system:String>
+    <system:String x:Key="report.send">Gönder</system:String>
+    <system:String x:Key="report.ok">Şikayetin için teşekkür ederiz. En kısa sürede sizinle iletişime geçecek ve sorununuzu düzeltmeye çalışacağız. İyi oyunlar dileriz.</system:String>
+
+    <system:String x:Key="report.category1">Nefret Söylemi</system:String>
+    <system:String x:Key="report.category2">Rahatsız Edici İçerik</system:String>
+    <system:String x:Key="report.category3">Hile &amp; Crosshair</system:String>
+    <system:String x:Key="report.category4">Bug Abuse</system:String>
+
+    <system:String x:Key="reports.reporter">Şikayet Eden</system:String>
+    <system:String x:Key="reports.reported">Şikayet Edilen</system:String>
+
+    <system:String x:Key="administration.users">Kullanıcılar</system:String>
+    <system:String x:Key="administration.reports">Şikayetler</system:String>
+    <system:String x:Key="administration.dedectedcheats">Algılanan Hileler</system:String>
+    <system:String x:Key="administration.processhistory">Görev Geçmişi</system:String>
+
+    <system:String x:Key="usersettings.permission">Yetki: </system:String>
+    <system:String x:Key="usersettings.save">Kaydet</system:String>
+
+    <system:String x:Key="soundpack.information"> Bu özellik GTA V üzerinde değişiklikler yapar. Oluşabilecek sorunlardan dolayı sorumluluk kabul etmemekteyiz. Eski dosyaların yedeği alınır. İstediğiniz zaman launcher üzerinden bu özelliği kapatabilirsiniz.</system:String>
+    <system:String x:Key="soundpack.install">Yükle</system:String>
+    <system:String x:Key="soundpack.restore">Kaldır</system:String>
+    <system:String x:Key="soundpack.restoring">Değişiklikler geri alınıyor ($restored/$total)</system:String>
+    <system:String x:Key="soundpack.notfoundgtav">GTA V Lokasyonu seçilmemiş lütfen ana menüden GTA V lokasyonunu seçin.</system:String>
+    <system:String x:Key="soundpack.restored">GTA V orijinal haline getirildi. İyi oyunlar.</system:String>
+
+    <system:String x:Key="soundpackdownloader.progress">$progress% Güncelleniyor</system:String>
+    <system:String x:Key="soundpackdownloader.downloadingprogress">(İndirilen %downloaded/%total)</system:String>
+    <system:String x:Key="soundpackdownloader.details">(Toplam $updated/$total)</system:String>
+    <system:String x:Key="soundpackdownloader.preparingfordownload">İndirmeye hazırlanıyor...</system:String>
+    <system:String x:Key="soundpackdownloader.preparing">Hazırlanıyor...</system:String>
+    <system:String x:Key="soundpackdownloader.ready">Yeni ses paketiniz hazır! Oyuna giriş yaptığınızda aktif olacaktır. İyi oyunlar dileriz!</system:String>
+
+    <system:String x:Key="updates.noupdates">Henüz hiçbirşey yok! :(</system:String>
+    <system:String x:Key="updates.description">Güncelle açıklaması şöyle böyle...</system:String>
+    <system:String x:Key="updates.send">Gönder</system:String>
+
+    <system:String x:Key="rules.norules">Henüz hiçbirşey yok! :(</system:String>
+    <system:String x:Key="rules.rule">Kural</system:String>
+    <system:String x:Key="rules.send">Gönder</system:String>
+
+    <system:String x:Key="posts.whatyouthink">Ne düşünüyorsun?</system:String>
+    <system:String x:Key="posts.publish">Yayımla</system:String>
+    <system:String x:Key="posts.delete">Sil</system:String>
+    <system:String x:Key="posts.placeholder">Ne düşünüyorsun?</system:String>
+    <system:String x:Key="posts.share">Paylaş</system:String>
+    <system:String x:Key="posts.notpublishedyet">Henüz Yayımlanmadı</system:String>
+
+    <system:String x:Key="userpage.profile">Kullanıcı Profili</system:String>
+    <system:String x:Key="userpage.posts">Paylaşımları</system:String>
+
+    <system:String x:Key="statistics.timescale">Grafik Zaman Skalası</system:String>
+    <system:String x:Key="statistics.playerstats">Oyuncu İstatistikleri</system:String>
+    <system:String x:Key="statistics.updatestats">Güncelleme İstatistikleri</system:String>
+    <system:String x:Key="statistics.cheatstats">Hile İstatistikleri</system:String>
+    <system:String x:Key="statistics.usercount">Oyuncu Sayısı</system:String>
+    <system:String x:Key="statistics.totaldailylogin">Toplam Günlük Giriş Sayısı</system:String>
+    <system:String x:Key="statistics.updates">Güncelleme Sayısı</system:String>
+    <system:String x:Key="statistics.cheats">Algılanan Hile Sayısı</system:String>
+    <system:String x:Key="statistics.daily">Günlük</system:String>
+    <system:String x:Key="statistics.weekly">Haftalık</system:String>
+    <system:String x:Key="statistics.monthly">Aylık</system:String>
+
+    <system:String x:Key="register.register">KAYIT OL</system:String>
+    <system:String x:Key="register.about">Discord'a bağlanamadık. Bu yüzden bir kayıt oluşturmamız gerek. Bunun için üzgünüz.</system:String>
+    <system:String x:Key="register.important">Bu kısmı doğru doldurman oyuna giriş yapman için çok önemli bir kısım. Eğer nereden bulacağını bilmiyorsan bana tıkla!</system:String>
+    <system:String x:Key="register.username">Kullanıcı Adı</system:String>
+    <system:String x:Key="register.uid">Discord Uid</system:String>
+    <system:String x:Key="register.submit">OYUNA KATIL</system:String>
+    <system:String x:Key="register.namelessthan40">Kullanıcı adı 40 karakterden fazla olamaz</system:String>
+    <system:String x:Key="register.uidmustbenumber">Discord UID sayı olmak zorunda</system:String>
+    <system:String x:Key="register.uidmustbe18">Discord UID 18 haneli olmak zorunda</system:String>
+    <system:String x:Key="register.uidistaken">Bu kullanıcı zaten var</system:String>
+    <system:String x:Key="register.pleasefilleverything">Lütfen tüm alanları doldurunuz</system:String>
+
+    <system:String x:Key="players.permission">Yetki</system:String>
+    <system:String x:Key="players.search">Ara...</system:String>
+    <system:String x:Key="players.whitelist">Whitelist</system:String>
+    <system:String x:Key="players.player">Oyuncu</system:String>
+    <system:String x:Key="players.tier1">Tier 1 VIP</system:String>
+    <system:String x:Key="players.tier2">Tier 2 VIP</system:String>
+    <system:String x:Key="players.tier3">Tier 3 VIP</system:String>
+    <system:String x:Key="players.tier4">Tier 4 VIP</system:String>
+    <system:String x:Key="players.guider">Rehber</system:String>
+    <system:String x:Key="players.moderator">Moderatör</system:String>
+    <system:String x:Key="players.owner">Kurucu</system:String>
+    <system:String x:Key="players.unknown">Silinmiş Kullanıcı</system:String>
+
+    <system:String x:Key="anticheat.cheatdetected">Hile Algılandı %CheatName%</system:String>
+    <system:String x:Key="anticheat.information">Oh olamaz! Hile tespit ettik. Hile açtığına inanamıyorum :(, ne yazık ki hile bilgilerini veritabanımıza gönderdik ve hileyi engelledik. Umarız bu birdaha yaşanmaz.</system:String>
+</ResourceDictionary>

@@ -1,0 +1,151 @@
+﻿<Page x:Class="Launchwares.Views.MainMenu"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Launchwares.Views" xmlns:customelements="clr-namespace:Launchwares.CustomElements" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:CustomUserControls="clr-namespace:Launchwares.CustomElements"
+      mc:Ignorable="d"
+      d:DesignHeight="624" d:DesignWidth="1012"
+      Loaded="Page_Loaded"
+      Title="MainMenu">
+
+    <Grid Margin="16 0 0 0">
+
+        <materialDesign:TransitioningContent>
+            <materialDesign:TransitioningContent.OpeningEffects>
+                <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:0.5"/>
+                <materialDesign:TransitionEffect Kind="SlideInFromRight" Duration="0:0:0.5"/>
+            </materialDesign:TransitioningContent.OpeningEffects>
+            <!--#region Updates -->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <TextBlock Margin="32 0 0 0" Text="{StaticResource mainmenu.serverstats}" Style="{StaticResource Title}"/>
+                    <Grid Margin="32 16 16 16 " Height="256" Width="1012" HorizontalAlignment="Left">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="294"/>
+                            <ColumnDefinition Width="294"/>
+                            <ColumnDefinition Width="294"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0" Margin="0 16 16 16">
+                            <Border CornerRadius="8" Opacity="0.2" Style="{StaticResource ServerInformationContainer}"/>
+                            <Border CornerRadius="8" Background="Transparent" Opacity="1">
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="PeopleGroup" Style="{StaticResource ServerInformationIcon}"/>
+                                    <Border Width="24" Height="32"
+                                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                                            Background="{StaticResource Primary}" Opacity="0.4" Margin="16 0 0 0"
+                                            CornerRadius="0 0 8 8"/>
+                                    <TextBlock Text="{StaticResource mainmenu.ingame}" Style="{StaticResource ServerInformationText}"/>
+                                    <TextBlock x:Name="OnlineCountLabel" Text="0" Style="{StaticResource ServerInformatinValue}"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid Grid.Column="1" Margin="16">
+                            <Border CornerRadius="8" Opacity="0.2" Style="{StaticResource ServerInformationContainer}"/>
+                            <Border CornerRadius="8" Background="Transparent" Opacity="1">
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="TransitConnectionVariant" Style="{StaticResource ServerInformationIcon}"/>
+                                    <Border Width="24" Height="32"
+                                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                                            Background="{StaticResource Primary}" Opacity="0.4" Margin="16 0 0 0"
+                                            CornerRadius="0 0 8 8"/>
+                                    <TextBlock Text="{StaticResource mainmenu.ping}" Style="{StaticResource ServerInformationText}"/>
+                                    <TextBlock x:Name="PingCountLabel" Text="0" Style="{StaticResource ServerInformatinValue}"/>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                        <Grid x:Name="GameGrid" Grid.Column="2" Margin="16">
+                            <Border CornerRadius="8" Opacity="0.3" Style="{StaticResource ServerInformationContainer}"/>
+                            <Border CornerRadius="8" Background="Transparent" Opacity="1">
+                                <Grid>
+                                    <materialDesign:PackIcon Kind="Play" Style="{StaticResource ServerInformationIcon}"/>
+                                    <Border Width="24" Height="32"
+                                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                                            Background="{StaticResource Primary}" Opacity="0.6" Margin="16 0 0 0"
+                                            CornerRadius="0 0 8 8"/>
+                                </Grid>
+                            </Border>
+                            <Button x:Name="PlayButton"
+                                    Content="{StaticResource mainmenu.play}" Margin="24 56 24 0"
+                                    Click="PlayButton_Click"        
+                                    FontSize="18" FontWeight="Bold"
+                                    Height="60"
+                                    Background="{StaticResource Tertiary}"
+                                    BorderBrush="{StaticResource Tertiary}"
+                                    Panel.ZIndex="9999"/>
+                        </Grid>
+                    </Grid>
+                    <Grid Margin="16 64 0 64">
+                        <StackPanel Grid.Column="0" Margin="0 0 0 0">
+                            <TextBlock Text="{StaticResource mainmenu.whatsnew}"
+                                       Style="{StaticResource Title}"
+                                       Margin="16 0 0 32"/>
+                            <CustomUserControls:CustomScrollViewer x:Name="UpdatesScrollViewer"
+                                                               HorizontalScrollBarVisibility="Hidden"
+                                                               VerticalScrollBarVisibility="Hidden"
+                                                               ScrollChanged="UpdatesScrollViewer_ScrollChanged">
+                                <StackPanel x:Name="UpdateContainer"
+                                            Orientation="Horizontal"
+                                            Margin="16 0 0 0">
+                                </StackPanel>
+                            </CustomUserControls:CustomScrollViewer>
+                        </StackPanel>
+
+                        <!--#region Viewer Slider -->
+                        <Button x:Name="ToLeft"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Top"
+                                Click="ToLeft_Click"
+                                Width="32"
+                                Height="32"
+                                Style="{StaticResource Scroll}"
+                                Background="{StaticResource Primary}"
+                                BorderBrush="{StaticResource Primary}"
+                                Margin="-16 144 0 0"
+                                Opacity="1">
+                            <materialDesign:PackIcon Kind="Triangle"
+                                                     Foreground="{StaticResource White}"
+                                                     VerticalAlignment="Center"
+                                                     VerticalContentAlignment="Center"
+                                                     Background="Transparent">
+                                <materialDesign:PackIcon.RenderTransform>
+                                    <RotateTransform Angle="-90" CenterX="8" CenterY="8"/>
+                                </materialDesign:PackIcon.RenderTransform>
+                            </materialDesign:PackIcon>
+                        </Button>
+                        <Button x:Name="ToRight"
+                                Click="ToRight_Click"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top"
+                                Style="{StaticResource Scroll}"
+                                Background="{StaticResource Primary}"
+                                BorderBrush="{StaticResource Primary}"
+                                Margin="0 144 0 0"
+                                Width="32"
+                                Height="32"
+                                Opacity="1">
+                            <materialDesign:PackIcon Kind="Triangle"
+                                                     Foreground="{StaticResource White}"
+                                                     VerticalAlignment="Center"
+                                                     VerticalContentAlignment="Center"
+                                                     Background="Transparent">
+                                <materialDesign:PackIcon.RenderTransform>
+                                    <RotateTransform Angle="90" CenterX="8" CenterY="8"/>
+                                </materialDesign:PackIcon.RenderTransform>
+                            </materialDesign:PackIcon>
+                        </Button>
+                        <!--#endregion-->
+                    </Grid>
+                    <StackPanel Margin="16 32 0 16" Grid.Column="1">
+                        <TextBlock Text="{StaticResource mainmenu.whatpeoplethinking}"
+                                       Style="{StaticResource Title}"
+                                       Margin="16 0 0 32"/>
+                        <StackPanel Orientation="Horizontal" x:Name="RandomPost" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </StackPanel>
+            </ScrollViewer>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</Page>

@@ -1,0 +1,33 @@
+﻿<Page x:Class="Launchwares.Views.Profile"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Launchwares.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      d:DesignHeight="624" d:DesignWidth="1012"
+      Title="Profile">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="16 0 0 0">
+            <TextBlock Margin="16 0 0 0" Text="{StaticResource userpage.profile}" Style="{StaticResource Title}"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Ellipse Width="96" Height="96">
+                    <Ellipse.Fill>
+                        <ImageBrush x:Name="UserPhoto"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <TextBlock x:Name="Username" Margin="16" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Title}" FontSize="32"/>
+                <materialDesign:PackIcon x:Name="Badge"
+                                         VerticalAlignment="Center"
+                                         VerticalContentAlignment="Center"
+                                         Width="48" Height="48"/>
+            </StackPanel>
+            <TextBlock Margin="16 32 0 0" Text="{StaticResource leftmenu.posts}" Style="{StaticResource Title}"/>
+            <StackPanel Margin="16 16 16 0" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel x:Name="PostContainerLeft"/>
+                <StackPanel x:Name="PostContainerRight"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

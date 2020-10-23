@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Launchwares.CustomElements.PlayerBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Launchwares.CustomElements"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d"
+             d:DesignHeight="350" d:DesignWidth="260">
+    <Grid Width="260" Margin="8">
+        <Border Style="{StaticResource PlayerContainer}"/>
+        <StackPanel Margin="16">
+            <Border Height="180" CornerRadius="8">
+                <Border.Background>
+                    <ImageBrush x:Name="PlayerProfilePhoto" Stretch="Fill"/>
+                </Border.Background>
+            </Border>
+            <StackPanel Grid.Row="1">
+                <TextBlock x:Name="PlayerUsername"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource White}"
+                           Margin="0 12 0 0"
+                           FontSize="20"
+                           TextAlignment="Center"/>
+            </StackPanel>
+            <Separator Grid.Row="2"
+                       Style="{StaticResource MaterialDesignDarkSeparator}"
+                       Margin="4" />
+            <Grid Margin="0 8 0 0" Width="220">
+                <TextBlock Text="{StaticResource players.whitelist}"
+                           FontSize="16"
+                           Foreground="{StaticResource White}"
+                           HorizontalAlignment="Left"/>
+                <ToggleButton x:Name="HasWhitelist"
+                              Style="{StaticResource MaterialDesignSwitchToggleButton}"
+                              Foreground="{StaticResource Secondary}"
+                              HorizontalAlignment="Right"
+                              Click="HasWhitelist_Click"/>
+            </Grid>
+            <Grid Margin="0 12 0 0" Width="220">
+                <TextBlock Text="{StaticResource players.permission}"
+                           FontSize="16"
+                           Foreground="{StaticResource White}"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"/>
+                <ComboBox x:Name="PermissionBox"
+                          materialDesign:HintAssist.Hint="{StaticResource players.permission}"
+                          materialDesign:HintAssist.Foreground="White"
+                          Foreground="White"
+                          Background="Transparent"
+                          HorizontalAlignment="Right"
+                          Width="Auto"
+                          Height="Auto"
+                          SelectionChanged="PermissionBox_SelectionChanged"
+                          BorderBrush="{StaticResource Secondary}"
+                          materialDesign:ColorZoneAssist.Mode="Dark"
+                          materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Tertiary}">
+                    <ComboBoxItem Content="{StaticResource players.player}" />
+                    <ComboBoxItem Content="{StaticResource players.tier1}" />
+                    <ComboBoxItem Content="{StaticResource players.tier2}" />
+                    <ComboBoxItem Content="{StaticResource players.tier3}" />
+                    <ComboBoxItem Content="{StaticResource players.tier4}" />
+                    <ComboBoxItem Content="{StaticResource players.guider}" />
+                    <ComboBoxItem Content="{StaticResource players.moderator}" />
+                    <ComboBoxItem Content="{StaticResource players.owner}" />
+                </ComboBox>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</UserControl>

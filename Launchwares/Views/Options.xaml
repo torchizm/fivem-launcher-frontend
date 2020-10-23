@@ -1,0 +1,107 @@
+﻿<Page x:Class="Launchwares.Views.Options"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:CustomUserControls="clr-namespace:Launchwares.CustomElements" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="624" d:DesignWidth="1012"
+      Title="Options">
+
+    <materialDesign:TransitioningContent>
+        <materialDesign:TransitioningContent.OpeningEffects>
+            <materialDesign:TransitionEffect Duration="0:0:0.300" Kind="SlideInFromBottom"/>
+        </materialDesign:TransitioningContent.OpeningEffects>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="64 0 64 0">
+                <!--<TextBlock Text="Theme" Style="{StaticResource Title}" Margin="0 0 0 32"/>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 64">
+                    <Grid Margin="0 0 16 0" Background="Transparent" MouseDown="Purple_MouseDown">
+                        <Border Background="Purple" Opacity="0.2" CornerRadius="8"/>
+                        <Border Width="128" Height="128">
+                            <Grid>
+                                <TextBlock Text="Purple" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Grid Margin="0 0 16 0" Background="Transparent" MouseDown="Black_MouseDown">
+                        <Border Background="Black" Opacity="0.2" CornerRadius="8"/>
+                        <Border Width="128" Height="128">
+                            <Grid>
+                                <TextBlock Text="Black" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Grid Margin="0 0 16 0" Background="Transparent" MouseDown="Blue_MouseDown">
+                        <Border Background="DodgerBlue" Opacity="0.2" CornerRadius="8"/>
+                        <Border Width="128" Height="128">
+                            <Grid>
+                                <TextBlock Text="Blue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Grid Margin="0 0 16 0" Background="Transparent" MouseDown="Red_MouseDown">
+                        <Border Background="Red" Opacity="0.2" CornerRadius="8"/>
+                        <Border Width="128" Height="128">
+                            <Grid>
+                                <TextBlock Text="Red" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Grid Margin="0 0 16 0" Background="Transparent" MouseDown="Orange_MouseDown">
+                        <Border Background="OrangeRed" Opacity="0.2" CornerRadius="8"/>
+                        <Border Width="128" Height="128">
+                            <Grid>
+                                <TextBlock Text="Orange" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Grid Margin="0 0 16 0" Background="Transparent" MouseDown="DarkBlue_MouseDown">
+                        <Border Background="DarkBlue" Opacity="0.2" CornerRadius="8"/>
+                        <Border Width="128" Height="128">
+                            <Grid>
+                                <TextBlock Text="Darkblue" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"/>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </StackPanel>-->
+
+                <!--#region Language Options -->
+                <StackPanel x:Name="LanguageContainer" Margin="0 0 0 64">
+                    <TextBlock Text="{DynamicResource options.language}" Style="{StaticResource Title}" Margin="0 0 0 32"/>
+                    <CustomUserControls:LanguageOption LanguageOptionText="{DynamicResource options.english}"
+                                                   GlobalLanguage="{StaticResource options.english-en}"
+                                                   FlagPath="/Launchwares;component/Resources/Media/Flags/en-US.png"
+                                                   IsChecked="False"
+                                                   LanguageKey="en-US"
+                                                   MouseDown="LanguageOption_MouseDown"/>
+                    <Rectangle Fill="White" Opacity="0.1" Width="Auto" Height="2"/>
+                    <CustomUserControls:LanguageOption LanguageOptionText="{DynamicResource options.turkish}"
+                                                   GlobalLanguage="{StaticResource options.turkish-tr}"
+                                                   FlagPath="/Launchwares;component/Resources/Media/Flags/tr-TR.png"
+                                                   IsChecked="False"
+                                                   LanguageKey="tr-TR"
+                                                   MouseDown="LanguageOption_MouseDown"/>
+                    <Rectangle Fill="White" Opacity="0.1" Width="Auto" Height="2"/>
+                    <CustomUserControls:LanguageOption LanguageOptionText="{DynamicResource options.french}"
+                                                   GlobalLanguage="{StaticResource options.french-fr}"
+                                                   FlagPath="/Launchwares;component/Resources/Media/Flags/fr-FR.png"
+                                                   IsChecked="False"
+                                                   LanguageKey="fr-FR"
+                                                   MouseDown="LanguageOption_MouseDown"/>
+                </StackPanel>
+                <!--#endregion-->
+
+                <!--#region Utilities-->
+                <StackPanel>
+                    <TextBlock Text="{DynamicResource options.utilities}" Style="{StaticResource Title}" Margin="0 0 0 32"/>
+                    <CustomUserControls:UtilityOption x:Name="CreateShortcutViewer"
+                                                  OptionValue="Kısayol Oluştur"
+                                                  IsChecked="False"
+                                                  MouseDown="CreateShortcut_MouseDown"/>
+                </StackPanel>
+                <!--#endregion-->
+            </StackPanel>
+        </ScrollViewer>
+    </materialDesign:TransitioningContent>
+</Page>

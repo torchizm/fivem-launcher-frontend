@@ -1,0 +1,49 @@
+﻿<Window x:Class="Launchwares.Views.SoundPackDownloader"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Launchwares.Views"
+        mc:Ignorable="d"
+        Title="SouncPackDownloader"
+        Height="384"
+        Width="384"
+        Loaded="Window_Loaded"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        ShowInTaskbar="false">
+    <Grid Background="Transparent"
+          x:Name="MainContainer"
+          MouseDown="MainContainer_MouseDown">
+        <Border Background="#FF302835"/>
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <Image Source="https://launchwares.com/img/launchwares.png"
+                       Width="256"
+                       Height="256"
+                       Margin="0 32 0 0"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center">
+                    <Image.Effect>
+                        <DropShadowEffect BlurRadius="8"
+                                          Opacity="0.8"/>
+                    </Image.Effect>
+                </Image>
+                <Label x:Name="UpdateProgress"
+                       Content="{StaticResource soundpackdownloader.progress}"
+                       Foreground="White"
+                       FontSize="24"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+                <Label x:Name="UpdateDetails"
+                       Content="{StaticResource soundpackdownloader.details}"
+                       Foreground="White"
+                       FontSize="16"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="center"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

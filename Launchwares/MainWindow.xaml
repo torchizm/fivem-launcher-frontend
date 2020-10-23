@@ -1,0 +1,408 @@
+﻿<Window x:Class="Launchwares.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Launchwares"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:customelements="clr-namespace:Launchwares.CustomElements"
+        mc:Ignorable="d"
+        Title="Launchwares"
+        Height="720"
+        Width="1280"
+        MinHeight="720"
+        MinWidth="1280"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowState="Normal"
+        Loaded="Window_Loaded"
+        Closing="Window_Closing">
+
+    <WindowChrome.WindowChrome>
+        <WindowChrome GlassFrameThickness="0" CornerRadius="0" CaptionHeight="0" UseAeroCaptionButtons="False" ResizeBorderThickness="7"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid>
+        <!--#region Transparent Background -->
+        <Grid Opacity="0.8" Background="{DynamicResource Secondary}"/>
+        <!--#endregion-->
+
+        <!--#region Loading Screen -->
+        <Grid x:Name="LoadingContainer" x:FieldModifier="public" Visibility="Visible">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <Grid Margin="32">
+                    <Ellipse Width="256" Height="256">
+                        <Ellipse.Fill>
+                            <ImageBrush x:Name="LoadingImage"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                    <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                 Value="0"
+                                 IsIndeterminate="True"
+                                 Width="130"
+                                 Height="130"
+                                 HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 Foreground="{DynamicResource Primary}" Grid.RowSpan="2">
+                        <ProgressBar.RenderTransform>
+                            <ScaleTransform ScaleX="2" ScaleY="2"
+                                            CenterX="65" CenterY="65"/>
+                        </ProgressBar.RenderTransform>
+                    </ProgressBar>
+                </Grid>
+                <TextBlock x:Name="LoadingText"
+                           FontWeight="Bold"
+                           Foreground="{StaticResource White}"
+                           FontSize="48"
+                           TextAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+
+        <!--#endregion-->
+
+        <Grid x:Name="ProgramContainer" Visibility="Hidden">
+            <!--#region Main Container -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="268"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--#region Left Panel Background -->
+                <Grid Opacity="0.3" Background="{DynamicResource Tertiary}"/>
+                <!--#endregion-->
+
+                <materialDesign:TransitioningContent>
+                    <materialDesign:TransitioningContent.OpeningEffects>
+                        <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:1"/>
+                        <materialDesign:TransitionEffect Kind="SlideInFromLeft" Duration="0:0:1" />
+                    </materialDesign:TransitioningContent.OpeningEffects>
+                    <!--#region Left Panel -->
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="96"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!--#region Application Header -->
+                        <Grid Grid.Row="0" Opacity="1" MouseDown="Drag_MouseDown" Background="Transparent">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Top"
+                                        Margin="16 16 0 0">
+                                <Ellipse Width="48"
+                                         Height="48"
+                                         HorizontalAlignment="Left"
+                                         VerticalAlignment="Top"
+                                         Margin="4">
+                                    <Ellipse.Fill>
+                                        <ImageBrush x:Name="NavbarPhoto" ImageSource="https://launchwares.com/img/launchwares.png"/>
+                                    </Ellipse.Fill>
+                                </Ellipse>
+                                <TextBlock Text="{DynamicResource application.title}"
+                                           HorizontalAlignment="Left"
+                                           VerticalAlignment="Center"
+                                           Margin="4"
+                                           FontWeight="Bold">
+                                    <TextBlock.Effect>
+                                        <DropShadowEffect BlurRadius="10" Color="White" ShadowDepth="0" Opacity="0.5"/>
+                                    </TextBlock.Effect>
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                        <!--#endregion-->
+
+                        <!--#region Left Panel Content -->
+                        <Grid Grid.Row="1">
+                            <StackPanel>
+                                <Grid>
+                                    <TextBlock Text="{DynamicResource leftmenu.menu}" Style="{StaticResource MenuTitle}" Height="Auto" Width="Auto"/>
+                                    <StackPanel Margin="0 74 0 16">
+                                        <customelements:MenuItem Icon="Home"
+                                                                 MenuItemText="{DynamicResource leftmenu.home}"
+                                                                 Style="{StaticResource SelectedPage}"
+                                                                 x:Name="HomepageButton" MouseDown="HomepageButton_MouseDown"/>
+                                        <customelements:MenuItem Icon="Update"
+                                                                 MenuItemText="{DynamicResource leftmenu.updates}"
+                                                                 x:Name="UpdatesButton" MouseDown="UpdatesButton_MouseDown"
+                                                                 Style="{StaticResource MenuItem}"/>
+                                        <customelements:MenuItem Icon="AccountMultiple"
+                                                                 MenuItemText="{DynamicResource leftmenu.posts}"
+                                                                 x:Name="PostsButton" MouseDown="PostsButton_MouseDown"
+                                                                 Style="{StaticResource MenuItem}"/>
+                                    </StackPanel>
+                                </Grid>
+                                <Grid x:Name="AdministrationArea">
+                                    <TextBlock Text="{DynamicResource leftmenu.admin}" Style="{StaticResource MenuTitle}"/>
+                                    <StackPanel Margin="0 74 0 0">
+                                        <customelements:MenuItem Icon="Poll"
+                                                                 MenuItemText="{DynamicResource leftmenu.serverstats}"
+                                                                 Style="{StaticResource MenuItem}"
+                                                                 x:Name="ServerStatsButton" MouseDown="ServerStatsButton_MouseDown"/>
+                                        <customelements:MenuItem Icon="AccountSearch"
+                                                                 MenuItemText="{DynamicResource leftmenu.anticheat}"
+                                                                 x:Name="AnticheatButton" MouseDown="AnticheatButton_MouseDown"
+                                                                 Style="{StaticResource MenuItem}"/>
+                                        <customelements:MenuItem Icon="AccountGroup"
+                                                                 MenuItemText="{DynamicResource leftmenu.players}"
+                                                                 x:Name="PlayersButton" MouseDown="PlayersButton_MouseDown"
+                                                                 Style="{StaticResource MenuItem}"/>
+                                    </StackPanel>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                        <!--#endregion-->
+
+                        <!--#region Advertisiment -->
+                        <Grid Grid.Row="1" Height="180" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+                            <TextBlock  TextAlignment="Center"
+                                        VerticalAlignment="Bottom"
+                                        Margin="16"
+                                        Foreground="Gray">
+                                        Launcher #Beta v1.0.2.6
+                                <TextBlock.Effect>
+                                    <DropShadowEffect Color="White" ShadowDepth="0" BlurRadius="1"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </Grid>
+                        <!--#endregion-->
+                    </Grid>
+                    <!--#endregion-->
+                </materialDesign:TransitioningContent>
+
+                <!--#region Contents-->
+                <Grid Grid.Column="1">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="96"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--#region Player Informations -->
+                    <materialDesign:TransitioningContent>
+                        <materialDesign:TransitioningContent.OpeningEffects>
+                            <materialDesign:TransitionEffect Kind="SlideInFromTop" Duration="0:0:1"/>
+                        </materialDesign:TransitioningContent.OpeningEffects>
+                        <Grid Grid.Row="0" Background="Transparent" MouseDown="Drag_MouseDown">
+                            <StackPanel Orientation="Horizontal"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Stretch">
+
+                                <materialDesign:PopupBox Width="Auto" Height="Auto"
+                                                         HorizontalAlignment="Center"
+                                                         VerticalAlignment="Center"
+                                                         Style="{StaticResource OptionsExpander}"
+                                                         Foreground="{StaticResource White}"
+                                                         materialDesign:RippleAssist.IsDisabled="True"
+                                                         PlacementMode="BottomAndAlignCentres"
+                                                         Background="Transparent">
+                                    <materialDesign:PopupBox.ToggleContent>
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock x:Name="UsernameLabel"
+                                                       Text="Username"
+                                                       VerticalAlignment="Center"
+                                                       Margin="0 0 8 0"
+                                                       FontWeight="Bold"/>
+
+                                            <Ellipse Width="48" Height="48" Margin="0 0 8 0">
+                                                <Ellipse.Fill>
+                                                    <ImageBrush x:Name="UserPhoto"/>
+                                                </Ellipse.Fill>
+                                            </Ellipse>
+
+                                            <materialDesign:PackIcon x:Name="Badge"
+                                                                     Width="24" Height="24"
+                                                                     VerticalAlignment="Center"
+                                                                     HorizontalAlignment="Center"
+                                                                     Margin="0 0 16 0"/>
+                                        </StackPanel>
+                                    </materialDesign:PopupBox.ToggleContent>
+                                    <StackPanel>
+                                        <StackPanel x:Name="MyProfileButton" MouseDown="MyProfileButton_MouseDown" Style="{StaticResource SubmenuItem}" Orientation="Horizontal" Margin="8" Cursor="Hand">
+                                            <materialDesign:PackIcon Kind="User"
+                                                                     Foreground="Black"
+                                                                     Margin="2"
+                                                                     Width="20"
+                                                                     Height="20"/>
+                                            <TextBlock Text="{DynamicResource popupmenu.myprofile}"
+                                                       Foreground="Black"
+                                                       Margin="2"/>
+                                        </StackPanel>
+                                        <StackPanel x:Name="OptionsButton" MouseDown="OptionsButton_MouseDown" Style="{StaticResource SubmenuItem}" Orientation="Horizontal" Margin="8" Cursor="Hand">
+                                            <materialDesign:PackIcon Kind="Cog"
+                                                                     Foreground="Black"
+                                                                     Margin="2"
+                                                                     Width="20"
+                                                                     Height="20"/>
+                                            <TextBlock Text="{DynamicResource popupmenu.options}"
+                                                       Foreground="Black"
+                                                       Margin="2"/>
+                                        </StackPanel>
+                                        <StackPanel Style="{StaticResource SubmenuItem}" Orientation="Horizontal" Margin="8" Cursor="Hand" MouseDown="ExitProgram_MouseDown">
+                                            <materialDesign:PackIcon Kind="Close"
+                                                                     Foreground="Black"
+                                                                     Margin="2"
+                                                                     Width="20"
+                                                                     Height="20"/>
+                                            <TextBlock Text="{DynamicResource popupmenu.closeprogram}"
+                                                       Foreground="Black"
+                                                       Margin="2"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </materialDesign:PopupBox>
+
+                                <Border MouseDown="Minimize_MouseDown" Style="{StaticResource MinimizeBox}" Width="24" Height="24" CornerRadius="4" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 8 0" Panel.ZIndex="99">
+                                    <materialDesign:PackIcon Kind="WindowMinimize" Style="{StaticResource Minimize}"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:TransitioningContent>
+                    <!--#endregion-->
+
+                    <!--#region Inner Container -->
+                    <Grid Grid.Row="1" x:Name="InnerContainer">
+                        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
+                    </Grid>
+                    <!--#endregion-->
+                </Grid>
+                <!--#endregion-->
+            </Grid>
+            <!--#endregion-->
+        </Grid>
+
+        <Grid x:Name="RegisterContainer" x:FieldModifier="public" Width="512" Visibility="Hidden">
+            <!-- #region Error View -->
+            <Grid x:Name="ErrorGrid"
+                  Width="Auto"
+                  Height="Auto"
+                  VerticalAlignment="Top"
+                  HorizontalAlignment="Center"
+                  Margin="0 64 0 0"
+                  Visibility="Hidden">
+                <Border BorderThickness="2"
+                        BorderBrush="Red"
+                        Width="256"
+                        Height="Auto"
+                        CornerRadius="4"
+                        Background="DarkRed">
+                    <Grid Margin="8">
+                        <TextBlock x:Name="ErrorText"
+                                   Text=""
+                                   FontSize="18"
+                                   Foreground="White"
+                                   FontWeight="Bold"
+                                   TextWrapping="Wrap"/>
+                    </Grid>
+                </Border>
+            </Grid>
+            <!-- #endregion -->
+
+            <!-- #region Register Content -->
+            <Grid Visibility="Visible">
+                <StackPanel HorizontalAlignment="Stretch"
+                            VerticalAlignment="Center"
+                            Margin="64">
+                    <TextBox x:Name="NameTextbox"
+                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Tertiary}"
+                             Foreground="{StaticResource White}"
+                             FontWeight="Bold"
+                             FontSize="24"
+                             Margin="4"
+                             TextChanged="NameTextbox_TextChanged">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon
+                                    Kind="Account"
+                                    VerticalAlignment="Center"
+                                    VerticalContentAlignment="Center"
+                                    Width="24"
+                                    Height="24"/>
+                                <TextBlock Text="{DynamicResource register.username}"/>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                    </TextBox>
+
+                    <TextBox x:Name="UidTextbox"
+                             FontWeight="Bold"
+                             materialDesign:TextFieldAssist.UnderlineBrush="{StaticResource Tertiary}"
+                             Foreground="{StaticResource White}"
+                             FontSize="24"
+                             Margin="4"
+                             TextChanged="UidTextbox_TextChanged">
+                        <materialDesign:HintAssist.Hint>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Kind="Key"
+                                                         VerticalAlignment="Center"
+                                                         VerticalContentAlignment="Center"
+                                                         Width="24"
+                                                         Height="24"/>
+                                <TextBlock Text="{DynamicResource register.uid}"/>
+                            </StackPanel>
+                        </materialDesign:HintAssist.Hint>
+                    </TextBox>
+
+
+                    <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                            Height="40"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            Width="Auto"
+                            Margin="4 16 0 0"
+                            FontSize="24"
+                            FontWeight="Bold"
+                            Background="{StaticResource Tertiary}"
+                            BorderBrush="{StaticResource Tertiary}"
+                            Click="RegisterButton_Click">
+                        <TextBlock Text="{DynamicResource register.submit}" />
+                    </Button>
+                </StackPanel>
+
+                <materialDesign:PackIcon Kind="QuestionMark"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Right"
+                                     Width="24"
+                                     Height="24"
+                                     Margin="36"
+                                     Foreground="White"
+                                     Cursor="Hand"
+                                     MouseDown="PackIcon_MouseDown"
+                                     ToolTip="{DynamicResource register.important}"/>
+
+                <TextBlock Text="{DynamicResource register.about}"
+                                   FontSize="16"
+                                   Foreground="White"
+                                   TextWrapping="Wrap"
+                                   TextAlignment="Center"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Bottom"
+                                   Margin="64"/>
+            </Grid>
+            <!-- #endregion -->
+        </Grid>
+
+
+        <materialDesign:TransitioningContent x:Name="CheatContainer" Visibility="Hidden">
+            <materialDesign:TransitioningContent.OpeningEffects>
+                <materialDesign:TransitionEffect Kind="SlideInFromBottom" Duration="0:0:1"/>
+                <materialDesign:TransitionEffect Kind="FadeIn" Duration="0:0:1"/>
+            </materialDesign:TransitioningContent.OpeningEffects>
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" MaxWidth="720">
+                <materialDesign:PackIcon Kind="ShieldHalfFull" Foreground="IndianRed"
+                                     Width="192" Height="192"
+                                     VerticalAlignment="Center"
+                                     HorizontalAlignment="Center"/>
+                <TextBlock FontWeight="Bold" FontSize="26" Margin="16"
+                           TextAlignment="Center"
+                           TextWrapping="Wrap"
+                           Text="{DynamicResource anticheat.cheatdetected}"
+                           x:Name="CheatTitleText"/>
+                <TextBlock FontWeight="Bold" FontSize="20" Margin="16"
+                           Text="{DynamicResource anticheat.information}"
+                           TextWrapping="Wrap" TextAlignment="Center"/>
+            </StackPanel>
+        </materialDesign:TransitioningContent>
+    </Grid>
+</Window>

@@ -1,0 +1,69 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Launchwares.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Location_GtaV" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Location_FiveM" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Language" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UsingSoundpack" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="LogoPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="RPCId" Type="System.UInt64" Scope="User">
+      <Value Profile="(Default)">716916729195921448</Value>
+    </Setting>
+    <Setting Name="RPCLargeImageKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">logo</Value>
+    </Setting>
+    <Setting Name="RPCLargeImageText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Launcher</Value>
+    </Setting>
+    <Setting Name="RPCSmallImageKey" Type="System.String" Scope="User">
+      <Value Profile="(Default)">discordx512</Value>
+    </Setting>
+    <Setting Name="RPCSmallImageText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">www.launchwares.com</Value>
+    </Setting>
+    <Setting Name="Description" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Launcher</Value>
+    </Setting>
+    <Setting Name="MaxPlayers" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">64</Value>
+    </Setting>
+    <Setting Name="PlayerUID" Type="System.UInt64" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="PlayerUsername" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PlayerProfilephotoPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ManuallyCreated" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="OldName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Launcher</Value>
+    </Setting>
+    <Setting Name="Ayar" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ThemeIndex" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="CreateShortcut" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IsFirst" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
