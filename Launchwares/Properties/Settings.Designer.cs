@@ -12,7 +12,7 @@ namespace Launchwares.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "16.8.1.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -85,7 +85,7 @@ namespace Launchwares.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("716916729195921448")]
+        [global::System.Configuration.DefaultSettingValueAttribute("830106596297277521")]
         public ulong RPCId {
             get {
                 return ((ulong)(this["RPCId"]));
@@ -97,7 +97,7 @@ namespace Launchwares.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("logo")]
+        [global::System.Configuration.DefaultSettingValueAttribute("v-ingame")]
         public string RPCLargeImageKey {
             get {
                 return ((string)(this["RPCLargeImageKey"]));
@@ -109,7 +109,7 @@ namespace Launchwares.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Launcher")]
+        [global::System.Configuration.DefaultSettingValueAttribute("v-ingame")]
         public string RPCLargeImageText {
             get {
                 return ((string)(this["RPCLargeImageText"]));
@@ -121,25 +121,13 @@ namespace Launchwares.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("discordx512")]
+        [global::System.Configuration.DefaultSettingValueAttribute("x")]
         public string RPCSmallImageKey {
             get {
                 return ((string)(this["RPCSmallImageKey"]));
             }
             set {
                 this["RPCSmallImageKey"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("www.launchwares.com")]
-        public string RPCSmallImageText {
-            get {
-                return ((string)(this["RPCSmallImageText"]));
-            }
-            set {
-                this["RPCSmallImageText"] = value;
             }
         }
         
@@ -157,7 +145,7 @@ namespace Launchwares.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("64")]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
         public int MaxPlayers {
             get {
                 return ((int)(this["MaxPlayers"]));
@@ -272,6 +260,30 @@ namespace Launchwares.Properties {
             }
             set {
                 this["IsFirst"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("x")]
+        public string RPCSmallImageText {
+            get {
+                return ((string)(this["RPCSmallImageText"]));
+            }
+            set {
+                this["RPCSmallImageText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UserThemeIndex {
+            get {
+                return ((bool)(this["UserThemeIndex"]));
+            }
+            set {
+                this["UserThemeIndex"] = value;
             }
         }
     }

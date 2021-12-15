@@ -18,6 +18,7 @@
     <system:String x:Key="loading.connectingservices">Connecting to launcher services</system:String>
     <system:String x:Key="loading.gettinguniquetoken">Getting unique token</system:String>
     <system:String x:Key="loading.connectingdiscord">Connecting to Discord</system:String>
+    <system:String x:Key="loading.checkingfiles">Cheking FiveM files</system:String>
     <system:String x:Key="loading.done">We are done, loading launcher!</system:String>
     <system:String x:Key="loading.coffee">Making a cup of coffee</system:String>
     <system:String x:Key="loading.drinkcoffee">Drinking a sip of coffee</system:String>
@@ -37,7 +38,7 @@
     <system:String x:Key="error.1">Unknown</system:String>
     <system:String x:Key="error.2">You are not in whitelist</system:String>
     <system:String x:Key="error.3">You are banned from server</system:String>
-    <system:String x:Key="error.401">Invalid launcher token. Please contact us from https://launchwares.com/discord</system:String>
+    <system:String x:Key="error.401">Invalid launcher token. Please contact us from https://api.vlastcommynity.net/discord</system:String>
     <system:String x:Key="error.403">Not enough permission</system:String>
     <system:String x:Key="error.404">Server not found</system:String>
     <system:String x:Key="error.406">Launcher is in maintenance</system:String>
@@ -164,4 +165,6 @@
 
     <system:String x:Key="anticheat.cheatdetected">Cheat Detected %CheatName%</system:String>
     <system:String x:Key="anticheat.information">Oh no! We detected cheat. I can't believe you're cheating :(, unfortunately we posted your cheat data to our database and blocked cheat. We hope it doesn't happen again.</system:String>
+
+    <system:String x:Key="dialogs.select-folder">Select Folder</system:String>
 </ResourceDictionary> 

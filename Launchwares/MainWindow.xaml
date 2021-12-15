@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:customelements="clr-namespace:Launchwares.CustomElements"
         mc:Ignorable="d"
-        Title="Launchwares"
+        Title="VLAST Launcher"
         Height="720"
         Width="1280"
         MinHeight="720"
@@ -100,7 +100,7 @@
                                          VerticalAlignment="Top"
                                          Margin="4">
                                     <Ellipse.Fill>
-                                        <ImageBrush x:Name="NavbarPhoto" ImageSource="https://launchwares.com/img/launchwares.png"/>
+                                        <ImageBrush x:Name="NavbarPhoto" ImageSource="http://api.vlastcommunity.net/img/vlast.png"/>
                                     </Ellipse.Fill>
                                 </Ellipse>
                                 <TextBlock Text="{DynamicResource application.title}"
@@ -143,6 +143,10 @@
                                                                  MenuItemText="{DynamicResource leftmenu.serverstats}"
                                                                  Style="{StaticResource MenuItem}"
                                                                  x:Name="ServerStatsButton" MouseDown="ServerStatsButton_MouseDown"/>
+                                        <!--<customelements:MenuItem Icon="ServerNetwork"
+                                                                 MenuItemText="Server Information"
+                                                                 Style="{StaticResource MenuItem}"
+                                                                 x:Name="LiveServerInfoButton" MouseDown="LiveServerInfoButton_MouseDown"/>-->
                                         <customelements:MenuItem Icon="AccountSearch"
                                                                  MenuItemText="{DynamicResource leftmenu.anticheat}"
                                                                  x:Name="AnticheatButton" MouseDown="AnticheatButton_MouseDown"
@@ -163,7 +167,7 @@
                                         VerticalAlignment="Bottom"
                                         Margin="16"
                                         Foreground="Gray">
-                                        Launcher #Beta v1.0.2.6
+                                        Launcher v1.0.3.2
                                 <TextBlock.Effect>
                                     <DropShadowEffect Color="White" ShadowDepth="0" BlurRadius="1"/>
                                 </TextBlock.Effect>
@@ -218,6 +222,7 @@
                                                                      Width="24" Height="24"
                                                                      VerticalAlignment="Center"
                                                                      HorizontalAlignment="Center"
+                                                                     Foreground="White"
                                                                      Margin="0 0 16 0"/>
                                         </StackPanel>
                                     </materialDesign:PopupBox.ToggleContent>

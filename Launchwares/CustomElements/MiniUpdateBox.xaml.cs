@@ -2,21 +2,9 @@
 using Launchwares.Helpers;
 using LaunchwaresCore;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Launchwares.CustomElements
 {
@@ -40,7 +28,7 @@ namespace Launchwares.CustomElements
                 PhotoSource = ImageHelper.ConvertPhoto(update.ImagePath);
             }
             catch (Exception) {
-                PhotoSource = ImageHelper.ConvertPhoto("https://launchwares.com/img/launchwares.png");
+                PhotoSource = ImageHelper.ConvertPhoto("http://api.vlastcommunity.net/img/vlast.png");
                 Publisher = $"{Application.Current.Resources["players.unknown"]}";
             }
             Date = DateHelper.GetDiffForHumans(update.Date);

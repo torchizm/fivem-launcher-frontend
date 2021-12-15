@@ -18,6 +18,7 @@
     <system:String x:Key="loading.connectingservices">Connexion aux services de lancement</system:String>
     <system:String x:Key="loading.gettinguniquetoken">Obtenir un jeton unique</system:String>
     <system:String x:Key="loading.connectingdiscord">Connexion à Discord</system:String>
+    <system:String x:Key="loading.checkingfiles">Vérification des fichiers</system:String>
     <system:String x:Key="loading.done">Nous avons Terminé, Chargement du Launcher !</system:String>
     <system:String x:Key="loading.coffee">Fait une tasse de café</system:String>
     <system:String x:Key="loading.drinkcoffee">Boit une gorgée de café</system:String>
@@ -37,7 +38,7 @@
     <system:String x:Key="error.1">Inconnue</system:String>
     <system:String x:Key="error.2">Vous n'êtes pas dans la Whitelist</system:String>
     <system:String x:Key="error.3">Vous êtes banni du serveur</system:String>
-    <system:String x:Key="error.401">Jeton de lancement non valide. Veuillez nous contacter https://launchwares.com/discord</system:String>
+    <system:String x:Key="error.401">Jeton de lancement non valide. Veuillez nous contacter https://api.vlastcommynity.net/discord</system:String>
     <system:String x:Key="error.403">Pas assez de permission</system:String>
     <system:String x:Key="error.404">Serveur Introuvable</system:String>
     <system:String x:Key="error.406">Le Launcher est en Maintenance</system:String>
@@ -162,4 +163,6 @@
 
     <system:String x:Key="anticheat.cheatdetected">Cheat détectée %CheatName%</system:String>
     <system:String x:Key="anticheat.information">Oh non! Nous avons détecté un Cheat. Je ne peux pas croire que vous Cheate ! Malheureusement, nous avons publié vos données Cheat dans notre base de données et bloqué le Cheat. Nous espérons que cela ne se reproduira plus.</system:String>
+
+    <system:String x:Key="dialogs.select-folder">Sélectionner le dossier</system:String>
 </ResourceDictionary>

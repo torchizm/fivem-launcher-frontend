@@ -2,20 +2,10 @@
 using Launchwares.CustomElements;
 using Launchwares.Resources.Design;
 using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Launchwares.Views
 {
@@ -87,10 +77,20 @@ namespace Launchwares.Views
             ThemeHelper.SetTheme(ThemeHelper.Theme.DarkBlue);
         }
 
+        private void Vlast_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ThemeHelper.SetTheme(ThemeHelper.Theme.Vlast);
+        }
+        private void Green_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            ThemeHelper.SetTheme(ThemeHelper.Theme.Green);
+        }
+
         private void CreateShortcut_MouseDown(object sender, MouseButtonEventArgs e)
         {
             Properties.Settings.Default.CreateShortcut = !Properties.Settings.Default.CreateShortcut;
             Properties.Settings.Default.Save();
         }
+
     }
 }

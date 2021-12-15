@@ -1,23 +1,12 @@
 ﻿using Launchwares.Core;
 using Launchwares.Helpers;
 using LaunchwaresCore;
-using LaunchwaresCore;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Launchwares.CustomElements
 {
@@ -34,30 +23,46 @@ namespace Launchwares.CustomElements
                 Player = Utils.Users.Where(x => x.Uid == Cheat.Player).FirstOrDefault();
                 SuspectImage.ImageSource = ImageHelper.ConvertPhoto(Player.Profile_photo);
                 SuspectUsername.Text = Player.Username;
-            }
-            catch (Exception) {
-                SuspectImage.ImageSource = ImageHelper.ConvertPhoto("https://launchwares.com/img/launchwares.png");
+            } catch (Exception) {
+                SuspectImage.ImageSource = ImageHelper.ConvertPhoto("http://api.vlastcommunity.net/img/vlast.png");
                 SuspectUsername.Text = $"{Application.Current.Resources["players.unknown"]}";
             }
 
-            CheatName.Text = Utils.IllegalPrograms[Cheat.Client - 1];
+            if (Cheat.Client == 0)
+                CheatName.Text = "Dosya ismi bilinmiyor";
+            else
+                CheatName.Text = Utils.IllegalPrograms[Cheat.Client - 1];
+
+            if (!string.IsNullOrWhiteSpace(Cheat.Details) && !string.IsNullOrEmpty(Cheat.Details)) {
+                this.UrlSource = Cheat.Image;
+                DetailsText.Visibility = Visibility.Visible;
+                DetailsText.Text = Cheat.Details;
+            }
+            
             DateText.Text = Cheat.Date.ToString();
 
-            if (Cheat.Image != null && Cheat.Image != "") {
-                this.ImageSource = Cheat.Image;
+            if (Cheat.Image != null && Cheat.Image != "" && (
+                    Cheat.Image.EndsWith("jpeg") || Cheat.Image.EndsWith("jpg") || Cheat.Image.EndsWith("png")
+                )) {
+                this.UrlSource = Cheat.Image;
                 PhotoSource.ImageSource = ImageHelper.ConvertPhoto(Cheat.Image);
-            }
-            else {
+            } else {
                 PhotoContainer.Visibility = Visibility.Collapsed;
             }
         }
 
-        public string ImageSource { get; set; }
+        public string UrlSource { get; set; }
 
         private void PhotoContainer_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton != MouseButton.Left) return;
-            Process.Start(this.ImageSource);
+            Process.Start(this.UrlSource);
+        }
+
+        private void DetailsText_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton != MouseButton.Left) return;
+            Process.Start(this.UrlSource);
         }
     }
 }

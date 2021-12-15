@@ -1,41 +1,26 @@
 ﻿using Launchwares.AnimationHelpers;
 using Launchwares.Core;
-using Launchwares.Core.Antihack;
+using Launchwares.Core.Anticheat;
 using Launchwares.CustomElements;
-using Launchwares.Discord;
 using LaunchwaresCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Runtime.InteropServices;
-using System.Security.Principal;
-using System.Text;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Forms;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Effects;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Application = System.Windows.Forms.Application;
+using Cursors = System.Windows.Input.Cursors;
 using MessageBox = System.Windows.MessageBox;
 using MessageBoxIcon = System.Windows.MessageBoxImage;
-using Path = System.IO.Path;
 using Timer = System.Timers.Timer;
-using Cursors = System.Windows.Input.Cursors;
 
 namespace Launchwares.Views
 {
@@ -65,7 +50,7 @@ namespace Launchwares.Views
         private async void Page_Loaded(object sender, RoutedEventArgs e)
         {
             if (Utils.Server.Maintenance) {
-                if(Utils.UserType >= Models.UserType.Guider) {
+                if (Utils.UserType >= Models.UserType.Guider) {
                     PlayButton.Content = $"{System.Windows.Application.Current.Resources["application.maintenance"]}";
                 }
                 else {
@@ -113,21 +98,21 @@ namespace Launchwares.Views
 
                 string json = "";
                 using (WebClient client = new WebClient()) {
-                    json = await client.DownloadStringTaskAsync("http://" + ip + ":" + port + "/players.json");
+                    json = await client.DownloadStringTaskAsync($"http://{ip}:{port}/players.json");
                 }
 
                 List<Models.FivemPlayer> players = JsonConvert.DeserializeObject<List<Models.FivemPlayer>>(json);
 
                 if (players != null && players.Count > 0) {
                     Players = players.Count;
-                    Contents.PlayingCount = players.Count;
+                    //Contents.PlayingCount = players.Count;
                     OnlineCountTimer.Start();
-                    RichPresence.UpdatePresence();
+                    //RichPresence.UpdatePresence();
                 }
                 else {
                     Players = 0;
-                    Contents.PlayingCount = 0;
-                    RichPresence.UpdatePresence();
+                    //Contents.PlayingCount = 0;
+                    //RichPresence.UpdatePresence();
                 }
             }
             catch (Exception) { }
@@ -140,11 +125,8 @@ namespace Launchwares.Views
             using (TcpClient tcpClient = new TcpClient()) {
                 try {
                     Ping myPing = new Ping();
-
                     PingReply reply = await myPing.SendPingAsync(ip);
-
                     if (reply != null) Ping = reply.RoundtripTime;
-
                     await tcpClient.ConnectAsync(ip, Convert.ToInt32(port));
                     tcpCheck = true;
                 }
@@ -162,17 +144,18 @@ namespace Launchwares.Views
         }
 
         private Timer FivemStartTimer = new Timer() {
-            Interval = 1000
+            Interval = 2000
         };
-        int sti = 0;
+        //int sti = 0; 
 
         private async void PlayButton_Click(object sender, RoutedEventArgs e)
         {
             try {
                 if (Utils.Server.DiscordWhitelist) {
-                    var whitelist = await API.client.CustomPost<Models.GetResponse>($"http://whitelist.launchwares.com/api/check_whitelist?uid={Utils.Uid}");
-                    if (Properties.Settings.Default.ManuallyCreated == false && whitelist.Response == false) {
-                        MessageBox.Show("Bu sunucuda oynamak için whitelist yetkiniz yok.",
+                    var whitelist = await API.client.CustomPost<Models.GetResponse>($"https://whitelist.vlastcommunity.net/api/check_whitelist?uid={Utils.Uid}");
+
+                    if (whitelist.Response == false) {
+                            MessageBox.Show("Bu sunucuda oynamak için whitelist yetkiniz yok.",
                                 $"{System.Windows.Application.Current.Resources["application.title"]}",
                                 MessageBoxButton.OK,
                                 MessageBoxIcon.Exclamation);
@@ -190,121 +173,75 @@ namespace Launchwares.Views
                         MessageBoxIcon.Exclamation);
                     return;
                 }
-            }catch(Exception ex) {
+            }
+            catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
             }
+
+            Library.CheckGameFiles();
 
             if (LOADED) {
                 //if (!Properties.Settings.Default.ManuallyCreated
                 //    && RichPresence.client.CurrentPresence != null)
                 //    RichPresence.client.ClearPresence();
 
-                await API.client.Post<string>($"launcher_login/{API.client.Token.slug}?uid={Utils.Uid}");
-                MainWindow.main.ShowInTaskbar = false;
-                MainWindow.main.WindowState = WindowState.Minimized;
+                //await API.client.Post<string>($"launcher_login/{API.client.Token.slug}?uid={Utils.Uid}");
+                //MainWindow.main.ShowInTaskbar = false;
+                //MainWindow.main.WindowState = WindowState.Minimized;
 
-                string TeamspeakConnection = Utils.Server.TeamspeakIp != ""
-                                             ? TeamspeakConnection = $"ts3server://{Utils.Server.TeamspeakIp}"
-                                             : TeamspeakConnection = "";
+                //string TeamspeakConnection = Utils.Server.TeamspeakIp != ""
+                //                             ? $"ts3server://{Utils.Server.TeamspeakIp}"
+                //                             : "";
 
-                if (Utils.Server.TeamspeakPort != null && Utils.Server.TeamspeakPort != 0)
-                    TeamspeakConnection += $":{Utils.Server.TeamspeakPort}";
+                //if (Utils.Server.TeamspeakPort != null && Utils.Server.TeamspeakPort != 0)
+                //    TeamspeakConnection += $":{Utils.Server.TeamspeakPort}";
 
-                if (Utils.Server.TeamspeakPassword != "")
-                    TeamspeakConnection += $"?password={Utils.Server.TeamspeakPassword}";
+                //if (Utils.Server.TeamspeakPassword != "")
+                //    TeamspeakConnection += $"?password={Utils.Server.TeamspeakPassword}";
 
-                ProcessStartInfo StartTeamspeak = new ProcessStartInfo(TeamspeakConnection);
-                if (Utils.Server.TeamspeakIp == "") TeamspeakConnection = "";
-                if (TeamspeakConnection != "")
-                    StartTeamspeak = new ProcessStartInfo(TeamspeakConnection) {
-                        WindowStyle = ProcessWindowStyle.Minimized
-                    };
+                //ProcessStartInfo StartTeamspeak = new ProcessStartInfo(TeamspeakConnection);
+                //if (Utils.Server.TeamspeakIp == "") TeamspeakConnection = "";
+                //if (TeamspeakConnection != "")
+                //    StartTeamspeak = new ProcessStartInfo(TeamspeakConnection) {
+                //        WindowStyle = ProcessWindowStyle.Minimized
+                //    };
 
-                if (Process.GetProcessesByName("ts3client_win64").Length == 0
-                    && TeamspeakConnection != "")
-                    Process.Start(StartTeamspeak);
+                //if (Process.GetProcessesByName("ts3client_win64").Length == 0
+                //    && TeamspeakConnection != "")
+                //    Process.Start(StartTeamspeak);
 
-                try {
-                    if (Properties.Settings.Default.Location_FiveM != "" &&
-                        !File.Exists($"{Properties.Settings.Default.Location_FiveM}\\FiveM.exe")) {
-                        SetFivemLocation();
-                    }
-                }
-                catch (Exception ex) {
-                    MessageBox.Show($"Fivem lokasyonunu ararken bir hata meydana geldi. Hata detaylarını lütfen yetkili kişiye iletiniz;\n{ex.ToString()}", $"{System.Windows.Application.Current.Resources["application.title"]}");
-                }
+                //try {
+                //    if (Properties.Settings.Default.Location_FiveM != "" &&
+                //        !File.Exists($"{Properties.Settings.Default.Location_FiveM}\\FiveM.exe")) {
+                //        SetFivemLocation();
+                //    }
+                //}
+                //catch (Exception ex) {
+                //    MessageBox.Show($"Fivem lokasyonunu ararken bir hata meydana geldi. Hata detaylarını lütfen yetkili kişiye iletiniz;\n{ex.ToString()}", $"{System.Windows.Application.Current.Resources["application.title"]}");
+                //}
 
                 Library.HackTimer.Stop();
-                string StartArgs = $"/C title FiveM Bootstrapper&\"{Properties.Settings.Default.Location_FiveM}\\FiveM.exe\" +connect {Utils.Server.ServerIp}";
-                ProcessStartInfo Fivem = new ProcessStartInfo("cmd.exe", StartArgs);
-                Fivem.WindowStyle = ProcessWindowStyle.Hidden;
-                Fivem.CreateNoWindow = true;
-                Fivem.UseShellExecute = false;
+                //string StartArgs = $"/C title FiveM Bootstrapper&\"{Properties.Settings.Default.Location_FiveM}\\FiveM.exe\" +connect {Utils.Server.ServerIp}";
+                //string StartArgs = $"/C title FiveM Bootstrapper&start fivem://connect/{Utils.Server.ServerIp}";
+                //ProcessStartInfo Fivem = new ProcessStartInfo("chrome", "google.com");
+                //Fivem.WindowStyle = ProcessWindowStyle.Hidden;
+                //Fivem.CreateNoWindow = true;
+                //Fivem.UseShellExecute = false;
+                //if (Utils.Server.ServerPort != null && Utils.Server.ServerPort != 0) Fivem.Arguments += $":{Utils.Server.ServerPort}";
+                //Process.Start(Fivem);
+                Process.Start("explorer.exe", $"fivem://connect/{Utils.Server.ServerIp}");
 
-                if (Utils.Server.ServerPort != null && Utils.Server.ServerPort != 0) Fivem.Arguments += $":{Utils.Server.ServerPort}";
-                Process.Start(Fivem);
-
-                FivemStartTimer.Elapsed += FivemStartTimer_Elapsed;
-                FivemStartTimer.Start();
-            }
-        }
-
-        private void FivemStartTimer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            if (sti == 10) {
-                foreach (Process process in Process.GetProcesses()) {
-                    if (process.ProcessName.ToLower() == "cmd") {
-                        process.Kill();
-                    }
-                }
-            }
-            if (sti == 15) {
-                Library.StartHackTimer();
-                FivemStartTimer.Stop();
-            }
-        }
-
-        public void SetGtaVLocation()
-        {
-            FolderBrowserDialog gtavlocation = new FolderBrowserDialog() {
-                Description = $"{System.Windows.Application.Current.Resources["mainmenu.selectgtavlocation"]}"
-            };
-            DialogResult result = gtavlocation.ShowDialog();
-            if (result == DialogResult.OK)
-                if (File.Exists($@"{gtavlocation.SelectedPath}\GTA5.exe"))
-                    SetLocation(gtavlocation.SelectedPath, "gtav");
-                else
-                    MessageBox.Show($"{System.Windows.Application.Current.Resources["mainmenu.nogtavatlocation"]}",
-                                    $"{System.Windows.Application.Current.Resources["application.title"]}",
-                                    MessageBoxButton.OK,
-                                    MessageBoxIcon.Error);
-        }
-
-        public void SetFivemLocation()
-        {
-            FolderBrowserDialog fivemlocation = new FolderBrowserDialog() {
-                Description = $"{System.Windows.Application.Current.Resources["mainmenu.selectfivemlocation"]}"
-            };
-            DialogResult result = fivemlocation.ShowDialog();
-            if (result == DialogResult.OK)
-                if (File.Exists($@"{fivemlocation.SelectedPath}\FiveM.exe"))
-                    SetLocation(fivemlocation.SelectedPath, "fivem");
-                else
-                    MessageBox.Show($"{System.Windows.Application.Current.Resources["mainmenu.nofivematlocation"]}",
-                                    $"{System.Windows.Application.Current.Resources["application.title"]}",
-                                    MessageBoxButton.OK,
-                                    MessageBoxIcon.Error);
-        }
-
-        private void SetLocation(string path, string type)
-        {
-            if (type == "gtav") {
-                Properties.Settings.Default.Location_GtaV = path;
-                Properties.Settings.Default.Save();
-            }
-            else if (type == "fivem") {
-                Properties.Settings.Default.Location_FiveM = path;
-                Properties.Settings.Default.Save();
+                //Process.Start($@"https://api.vlastcommunity.net/api/connect?id={Utils.Server.RpcId}&uid={Utils.Uid}");
+                //FivemStartTimer.Elapsed += (senderObj, elapsedEventArgs) => {
+                //    if (sti == 10) {
+                //        webProcess.Kill();
+                //    }
+                //    if (sti == 15) {
+                //        Library.StartHackTimer();
+                //        FivemStartTimer.Stop();
+                //    }
+                //};
+                //FivemStartTimer.Start();
             }
         }
 
@@ -318,7 +255,7 @@ namespace Launchwares.Views
             });
         }
 
-        private void OnlineCountTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        private void OnlineCountTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             this.Dispatcher.Invoke(delegate
             {

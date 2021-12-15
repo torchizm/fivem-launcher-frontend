@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Costura.Fody.5.0.0-alpha0281\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.0.0-alpha0281\build\Costura.Fody.props')" />
+  <Import Project="..\packages\Costura.Fody.5.3.0\build\Costura.Fody.props" Condition="Exists('..\packages\Costura.Fody.5.3.0\build\Costura.Fody.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,18 +8,18 @@
     <ProjectGuid>{E05751D2-44D1-4EA8-82FA-130D789A5F46}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Launchwares</RootNamespace>
-    <AssemblyName>Launchwares</AssemblyName>
+    <AssemblyName>Vlast</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <TargetFrameworkProfile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\Just Roleplay\</PublishUrl>
+    <PublishUrl>D:\Lost Roleplay\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -35,14 +35,14 @@
     <PublisherName>Launchwares</PublisherName>
     <SuiteName>FiveM Lancher</SuiteName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>6</ApplicationRevision>
-    <ApplicationVersion>1.0.2.6</ApplicationVersion>
+    <ApplicationRevision>7</ApplicationRevision>
+    <ApplicationVersion>1.0.2.7</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -83,17 +83,16 @@
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>Launchwares.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Beta|AnyCPU'">
     <OutputPath>bin\Beta\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestTimestampUrl>http://timestamp.verisign.com/scripts/timstamp.dll</ManifestTimestampUrl>
+    <ManifestTimestampUrl>http://timestamp.digicert.com</ManifestTimestampUrl>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
@@ -106,15 +105,15 @@
     <Prefer32Bit>true</Prefer32Bit>
     <WarningLevel>2</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <DelaySign>false</DelaySign>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Costura, Version=5.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Costura.Fody.5.0.0-alpha0281\lib\netstandard1.0\Costura.dll</HintPath>
-    </Reference>
-    <Reference Include="DiscordRPC, Version=1.0.150.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DiscordRichPresence.1.0.150\lib\net35\DiscordRPC.dll</HintPath>
+    <Reference Include="Costura, Version=5.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Costura.Fody.5.3.0\lib\netstandard1.0\Costura.dll</HintPath>
     </Reference>
     <Reference Include="LaunchwaresCore">
-      <HintPath>..\..\launchwarescslibrary\LaunchwaresCore\bin\Debug\LaunchwaresCore.dll</HintPath>
+      <HintPath>..\..\launchwarescslibrary\LaunchwaresTestApplication\bin\Debug\LaunchwaresCore.dll</HintPath>
     </Reference>
     <Reference Include="LiveCharts, Version=0.9.7.0, Culture=neutral, PublicKeyToken=0bc1f845d1ebb8df, processorArchitecture=MSIL">
       <HintPath>..\packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll</HintPath>
@@ -133,8 +132,8 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.AppContext, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -288,14 +287,13 @@
     <Compile Include="AnimationHelpers\BlurHelper.cs" />
     <Compile Include="AnimationHelpers\OpacityHelper.cs" />
     <Compile Include="AnimationHelpers\ScrollViewerHelper.cs" />
-    <Compile Include="Core\AksunucumUpd.cs" />
     <Compile Include="Core\API.cs" />
     <Compile Include="Core\ScreenCapture.cs" />
     <Compile Include="Core\SubprocessController.cs" />
     <Compile Include="Core\UserPrivlieges.cs" />
     <Compile Include="Core\Webhook.cs" />
-    <Compile Include="Core\Antihack\Library.cs" />
-    <Compile Include="Core\Antihack\Utils.cs" />
+    <Compile Include="Core\Anticheat\Library.cs" />
+    <Compile Include="Core\Anticheat\Data.cs" />
     <Compile Include="Core\RamOptimization.cs" />
     <Compile Include="CustomElements\BigUpdateBox.xaml.cs">
       <DependentUpon>BigUpdateBox.xaml</DependentUpon>
@@ -304,6 +302,9 @@
       <DependentUpon>CheatBox.xaml</DependentUpon>
     </Compile>
     <Compile Include="CustomElements\CustomScrollViewer.cs" />
+    <Compile Include="CustomElements\MiniTagBox.xaml.cs">
+      <DependentUpon>MiniTagBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="CustomElements\UtilityOption.xaml.cs">
       <DependentUpon>UtilityOption.xaml</DependentUpon>
     </Compile>
@@ -322,8 +323,11 @@
     <Compile Include="CustomElements\MiniUpdateBox.xaml.cs">
       <DependentUpon>MiniUpdateBox.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CryptographyHelper.cs" />
     <Compile Include="Helpers\DateHelper.cs" />
+    <Compile Include="Helpers\FolderPicker.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="LanguageHelper\Languages.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -339,6 +343,9 @@
     </Compile>
     <Compile Include="Views\Moderation\Players.xaml.cs">
       <DependentUpon>Players.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Moderation\ServerInformation.xaml.cs">
+      <DependentUpon>ServerInformation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Moderation\Statistics.xaml.cs">
       <DependentUpon>Statistics.xaml</DependentUpon>
@@ -368,6 +375,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="CustomElements\CheatBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CustomElements\MiniTagBox.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -427,27 +438,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Locales\Locale.de-AT.xaml">
+    <Page Include="Resources\Design\XamlThemes\Green.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Resources\Locales\Locale.bg-BG.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Resources\Design\XamlThemes\Vlast.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Locales\Locale.fi-FI.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Resources\Locales\Locale.en-US.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Resources\Locales\Locale.fr-FR.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\Locales\Locale.de-DE.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -463,7 +466,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Discord\RichPresence.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -477,6 +479,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Moderation\Players.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Moderation\ServerInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -554,7 +560,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\Media\Flags\de-DE.png" />
     <Resource Include="Resources\Media\Flags\en-US.png" />
     <Resource Include="Resources\Media\Flags\tr-TR.png" />
   </ItemGroup>
@@ -566,6 +571,9 @@
     <Resource Include="Resources\Media\Flags\fr-FR.png" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\Logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -574,9 +582,11 @@
       <ErrorText>Bu proje bu bilgisayarda olmayan NuGet paketlerine başvuru yapıyor. Bunları indirmek için NuGet Paket Geri Yükleme'yi kullanın. Daha fazla bilgi için, bkz. http://go.microsoft.com/fwlink/?LinkID=322105. Eksik dosya: {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets'))" />
-    <Error Condition="!Exists('..\packages\Fody.6.2.0\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.2.0\build\Fody.targets'))" />
-    <Error Condition="!Exists('..\packages\Costura.Fody.5.0.0-alpha0281\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.0.0-alpha0281\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\Fody.6.5.1\build\Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Fody.6.5.1\build\Fody.targets'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.3.0\build\Costura.Fody.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.3.0\build\Costura.Fody.props'))" />
+    <Error Condition="!Exists('..\packages\Costura.Fody.5.3.0\build\Costura.Fody.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Costura.Fody.5.3.0\build\Costura.Fody.targets'))" />
   </Target>
   <Import Project="..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.3\build\MaterialDesignThemes.targets')" />
-  <Import Project="..\packages\Fody.6.2.0\build\Fody.targets" Condition="Exists('..\packages\Fody.6.2.0\build\Fody.targets')" />
+  <Import Project="..\packages\Fody.6.5.1\build\Fody.targets" Condition="Exists('..\packages\Fody.6.5.1\build\Fody.targets')" />
+  <Import Project="..\packages\Costura.Fody.5.3.0\build\Costura.Fody.targets" Condition="Exists('..\packages\Costura.Fody.5.3.0\build\Costura.Fody.targets')" />
 </Project>

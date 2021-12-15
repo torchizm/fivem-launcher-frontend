@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 
 namespace Launchwares.Resources.Design
@@ -19,25 +17,35 @@ namespace Launchwares.Resources.Design
 
         internal enum Theme
         {
+            Vlast,
             Purple,
             Black,
             Blue,
             Red,
             Orange,
-            DarkBlue
+            DarkBlue,
+            Green
         }
 
         internal static Dictionary<Theme, string> ThemeDict = new Dictionary<Theme, string>() {
+            { Theme.Vlast, "Vlast" },
             { Theme.Purple, "Purple" },
             { Theme.Black, "Black" },
             { Theme.Blue, "Blue" },
             { Theme.Red, "Red" },
             { Theme.Orange, "Orange" },
-            { Theme.DarkBlue, "DarkBlue" }
+            { Theme.DarkBlue, "DarkBlue" },
+            { Theme.Green, "Green" }
         };
 
-        internal static void SetTheme(Theme theme)
+        internal static void SetTheme(Theme theme, bool fromUser = true)
         {
+            if (fromUser == true) {
+                Properties.Settings.Default.ThemeIndex = (int)theme;
+                Properties.Settings.Default.UserThemeIndex = true;
+                Properties.Settings.Default.Save();
+            }
+
             var dict = new ResourceDictionary();
             var ThemePath = ThemeDict.Where(x => x.Key == theme).Select(x => x.Value).FirstOrDefault();
 

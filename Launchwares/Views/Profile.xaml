@@ -20,6 +20,7 @@
                 <TextBlock x:Name="Username" Margin="16" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource Title}" FontSize="32"/>
                 <materialDesign:PackIcon x:Name="Badge"
                                          VerticalAlignment="Center"
+                                         Foreground="White"
                                          VerticalContentAlignment="Center"
                                          Width="48" Height="48"/>
             </StackPanel>

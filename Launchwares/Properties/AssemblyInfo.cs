@@ -1,18 +1,17 @@
 ﻿using System.Reflection;
 using System.Resources;
-using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Windows;
 
 // Bir bütünleştirilmiş koda ilişkin Genel Bilgiler aşağıdaki öznitelikler kümesiyle
 // denetlenir. Bütünleştirilmiş kod ile ilişkili bilgileri değiştirmek için
 // bu öznitelik değerlerini değiştirin.
-[assembly: AssemblyTitle("Launchwares Launcher")]
+[assembly: AssemblyTitle("VLAST Launcher")]
 [assembly: AssemblyDescription("Launchwares FiveM Launcher")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Launchwares")]
-[assembly: AssemblyProduct("Launchwares Launcher")]
-[assembly: AssemblyCopyright("www.launchwares.com | Copyright ©  2020")]
+[assembly: AssemblyProduct("VLAST Launcher")]
+[assembly: AssemblyCopyright("www.launchwares.com | Copyright ©  2021")]
 [assembly: AssemblyTrademark("Launchwares")]
 [assembly: AssemblyCulture("")]
 

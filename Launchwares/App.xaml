@@ -20,7 +20,7 @@
                 <ResourceDictionary Source="pack://application:,,,/Resources/Design/Properties.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/Design/Main.xaml" />
 
-                <ResourceDictionary Source="pack://application:,,,/Resources/Design/XamlThemes/Purple.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Resources/Design/XamlThemes/Vlast.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/Resources/Locales/Locale.en-US.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

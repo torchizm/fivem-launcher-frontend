@@ -1,26 +1,11 @@
-﻿using Launchwares.Discord;
-using Launchwares.Helpers;
+﻿using Launchwares.Helpers;
 using LaunchwaresCore;
-using MaterialDesignThemes.Wpf;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Security.AccessControl;
-using System.Security.Principal;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
-using HorizontalAlignment = System.Windows.HorizontalAlignment;
-using Label = System.Windows.Controls.Label;
-using Orientation = System.Windows.Controls.Orientation;
-using Path = System.IO.Path;
 
 namespace Launchwares.Core
 {
@@ -113,9 +98,8 @@ namespace Launchwares.Core
 
         private async static void Client_OnTokenSync(Models.Token source)
         {
-            MainWindow.main.LoadingText.Text = $"{Application.Current.Resources["loading.done"]}";
-
             var server = await API.client.Get<Models.Server>($"server/{API.client.Token.slug}");
+            Utils.Server = server;
 
             if (server.LogoPath != "" && server.LogoPath != Properties.Settings.Default.LogoPath) {
                 Properties.Settings.Default.LogoPath = $"{API.client.ApiPath.Substring(0, API.client.ApiPath.Length - 3)}storage/{server.LogoPath}";
@@ -149,14 +133,17 @@ namespace Launchwares.Core
                 Properties.Settings.Default.Description = server.Description;
                 Properties.Settings.Default.Save();
             }
-            if (server.ThemeIndex != Properties.Settings.Default.ThemeIndex) {
+            if (server.ThemeIndex != Properties.Settings.Default.ThemeIndex && Properties.Settings.Default.UserThemeIndex == false) {
                 Properties.Settings.Default.ThemeIndex = server.ThemeIndex;
                 Properties.Settings.Default.Save();
             }
 
             try {
+                Utils.Hashes = await API.client.Get<List<Models.Hash>>("hashes");
                 var blacklist = await API.client.Get<Models.Blacklist>($"blacklist");
                 Utils.IllegalPrograms = blacklist.Programs;
+
+                DetectFiles();
             }
             catch (Exception) { }
 
@@ -170,8 +157,8 @@ namespace Launchwares.Core
                 };
                 Process.Start(updater);
 
-                System.Timers.Timer t = new System.Timers.Timer() { 
-                    Interval = 2000
+                System.Timers.Timer t = new System.Timers.Timer() {
+                    Interval = 300
                 };
 
                 t.Elapsed += (sender, arg) => Environment.Exit(0);
@@ -182,7 +169,7 @@ namespace Launchwares.Core
         internal async static void RPCLoaded()
         {
             var user = await API.client.Get<Models.User>($"player/{API.client.Token.slug}?player={Utils.Uid}");
-            
+
             Utils.Status = (Models.Status)user.Status;
             Utils.UserType = (Models.UserType)user.Usertype;
             Utils.Whitelist = user.Whitelist;
@@ -190,8 +177,38 @@ namespace Launchwares.Core
             MainWindow.main.UsernameLabel.Text = Utils.Username;
             MainWindow.main.UserPhoto.ImageSource = ImageHelper.ConvertPhoto(Utils.ProfilePhoto);
             Utils.Users = await API.client.Get<List<Models.User>>($"players/{API.client.Token.slug}");
+        }
 
-            MainWindow.main.LauncherLoaded();
+        public static void DetectFiles()
+        {
+            MainWindow.main.LoadingText.Text = $"{Application.Current.Resources["loading.checkingfiles"]}";
+
+            if (Properties.Settings.Default.Location_FiveM == "") {
+                //string fivemLocation = $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}/FiveM";
+                var fileFullLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Fivem", "Fivem.Exe");
+
+                if (File.Exists(fileFullLocation)) {
+                    while (true)
+                        if (Utils.SetFivemLocation()) {
+                            MainWindow.main.LauncherLoaded();
+                            break;
+                        }
+                }
+            } else {
+                var f = new FileInfo($@"{Properties.Settings.Default.Location_FiveM}\FiveM.exe");
+
+                if (f.Exists && f.Length > (Utils.Server.ByteCount - 20000) && f.Length < Utils.Server.ByteCount + 20000) {
+                    MainWindow.main.LauncherLoaded();
+                }
+                else {
+                    while (true) {
+                        if (Utils.SetFivemLocation()) {
+                            MainWindow.main.LauncherLoaded();
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
 }

@@ -79,7 +79,7 @@ namespace LaunchwaresSubprocess
 
         public void UpdatePresence()
         {
-            _Client.RegisterUriScheme("701972390187499650");
+            _Client.RegisterUriScheme(executable: $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Fivem\FiveM.exe");
             _Client.SetSubscription(EventType.Join | EventType.Spectate);
 
             Party party = new Party() {

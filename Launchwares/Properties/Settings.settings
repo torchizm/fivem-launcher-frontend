@@ -18,25 +18,22 @@
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="RPCId" Type="System.UInt64" Scope="User">
-      <Value Profile="(Default)">716916729195921448</Value>
+      <Value Profile="(Default)">830106596297277521</Value>
     </Setting>
     <Setting Name="RPCLargeImageKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">logo</Value>
+      <Value Profile="(Default)">v-ingame</Value>
     </Setting>
     <Setting Name="RPCLargeImageText" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Launcher</Value>
+      <Value Profile="(Default)">v-ingame</Value>
     </Setting>
     <Setting Name="RPCSmallImageKey" Type="System.String" Scope="User">
-      <Value Profile="(Default)">discordx512</Value>
-    </Setting>
-    <Setting Name="RPCSmallImageText" Type="System.String" Scope="User">
-      <Value Profile="(Default)">www.launchwares.com</Value>
+      <Value Profile="(Default)">x</Value>
     </Setting>
     <Setting Name="Description" Type="System.String" Scope="User">
       <Value Profile="(Default)">Launcher</Value>
     </Setting>
     <Setting Name="MaxPlayers" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">64</Value>
+      <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="PlayerUID" Type="System.UInt64" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -64,6 +61,12 @@
     </Setting>
     <Setting Name="IsFirst" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="RPCSmallImageText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">x</Value>
+    </Setting>
+    <Setting Name="UserThemeIndex" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

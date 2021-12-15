@@ -20,7 +20,7 @@
         <Border Background="#FF302835"/>
         <Grid>
             <StackPanel Orientation="Vertical">
-                <Image Source="https://launchwares.com/img/launchwares.png"
+                <Image Source="https://api.vlastcommunity.net/img/vlast.png"
                        Width="256"
                        Height="256"
                        Margin="0 32 0 0"

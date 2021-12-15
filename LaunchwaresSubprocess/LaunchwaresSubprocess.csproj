@@ -63,10 +63,10 @@
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestTimestampUrl>http://timestamp.verisign.com/scripts/timstamp.dll</ManifestTimestampUrl>
@@ -76,6 +76,10 @@
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>Launchwares.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DiscordRPC, Version=1.0.150.0, Culture=neutral, processorArchitecture=MSIL">
@@ -98,6 +102,7 @@
   <ItemGroup>
     <Compile Include="Discord.cs" />
     <Compile Include="Helpers\FivemHelper.cs" />
+    <Compile Include="Helpers\RegisteryHelper.cs" />
     <Compile Include="Helpers\StartupArgs.cs" />
     <Compile Include="Models\DiscordOutput.cs" />
     <Compile Include="Program.cs" />
@@ -105,7 +110,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Launchwares.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />
   </ItemGroup>

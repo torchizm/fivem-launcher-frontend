@@ -3,25 +3,19 @@ using Launchwares.Core;
 using Launchwares.Helpers;
 using Launchwares.Resources.Design;
 using Launchwares.Views;
+using Launchwares.LanguageHelper;
 using LaunchwaresCore;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices;
-using System.Security.Principal;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
 using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media.Imaging;
-using System.Windows.Threading;
 using Application = System.Windows.Application;
 
 namespace Launchwares
@@ -45,11 +39,20 @@ namespace Launchwares
             InitializeComponent();
             main = this;
 
+            // Create URI Scheme
+            //RegistryKey scheme = Registry.ClassesRoot.CreateSubKey("vlastdev");
+            //scheme.SetValue("URL Protocol", "");
+
+            // Create URI Scheme's action
+            //var command = scheme.CreateSubKey("shell").CreateSubKey("open").CreateSubKey("command");
+
+            //command.SetValue("", $"\"{Assembly.GetExecutingAssembly().Location}\" \"%1\"");
+
             //if (WindowsIdentity.GetCurrent().Owner.IsWellKnown(WellKnownSidType.BuiltinAdministratorsSid)) {
             //    System.Windows.MessageBox.Show("Program yönetici olarak çalıştırılamaz.");
             //    Application.Current.Shutdown(0);
             //}
-            AksunucumUpd.Start();
+
             if (Properties.Settings.Default.IsFirst) {
                 Properties.Settings.Default.Location_FiveM = $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\\FiveM";
                 Properties.Settings.Default.IsFirst = false;
@@ -58,16 +61,24 @@ namespace Launchwares
 
             var dict = new ResourceDictionary();
             var data = Properties.Settings.Default.Language;
-           
+
             try {
-                if (data == null || data == "") {
+                if (data == null && data == "") {
                     var Language = Thread.CurrentThread.CurrentCulture.ToString();
+
+                    if (!Languages.LanguageList.Contains(Language))
+                        Language = "tr-TR";
+
                     dict.Source = new Uri($@"..\Resources\Locales\Locale.{Language}.xaml", UriKind.Relative);
-                    data = dict.Source.ToString().Split('.')[3];
-                    Properties.Settings.Default.Language = data;
+                    Properties.Settings.Default.Language = Language;
                     Properties.Settings.Default.Save();
-                }
-                else {
+                } else {
+                    if (String.IsNullOrWhiteSpace(data)) {
+                        data = "tr-TR";
+                        Properties.Settings.Default.Language = data;
+                        Properties.Settings.Default.Save();
+                    }
+
                     dict.Source = new Uri($@"..\Resources\Locales\Locale.{data}.xaml", UriKind.Relative);
                 }
             }
@@ -80,8 +91,11 @@ namespace Launchwares
 
             Utils.Language = dict;
             Application.Current.Resources.MergedDictionaries.Add(Utils.Language);
+
             if (Properties.Settings.Default.LogoPath != "") LoadingImage.ImageSource = ImageHelper.ConvertPhoto(Properties.Settings.Default.LogoPath);
-            ThemeHelper.SetTheme((ThemeHelper.Theme)Properties.Settings.Default.ThemeIndex);
+
+            ThemeHelper.SetTheme((ThemeHelper.Theme)Properties.Settings.Default.ThemeIndex, false);
+
             SmallIcon = new NotifyIcon();
             SmallIcon.DoubleClick += new EventHandler(SmallIcon_DoubleClick);
             SmallIcon.Text = $"{Application.Current.Resources["application.title"]}";
@@ -134,7 +148,7 @@ namespace Launchwares
                     string OutputPath = $@"{ProgramDirector}\Resources\{Application.Current.Resources["application.title"]}.ico";
                     SmallIcon.Icon = new Icon(OutputPath);
                 }
-                catch (Exception e) { }
+                catch (Exception) { }
             }
 
             isLoaded = true;
@@ -145,9 +159,9 @@ namespace Launchwares
                 Badge.Kind = Utils.GetBadge(Utils.UserType);
 
             AdministrationArea.Visibility = (Utils.UserType >= Models.UserType.Guider) ? Visibility.Visible : Visibility.Hidden;
-
             Utils.Server = await API.client.Get<Models.Server>($"server/{API.client.Token.slug}");
-            ThemeHelper.SetTheme((ThemeHelper.Theme)Utils.Server.ThemeIndex);
+
+            //ThemeHelper.SetTheme((ThemeHelper.Theme)Utils.Server.ThemeIndex, false);
 
             SelectedStackpanel = HomepageButton;
             this.Dispatcher.Invoke(delegate
@@ -157,7 +171,8 @@ namespace Launchwares
                 CreateView(new Views.MainMenu(), HomepageButton);
             });
 
-            Core.Antihack.Library.StartHackTimer();
+            Core.Anticheat.Library.StartHackTimer();
+            Core.Anticheat.Library.CheckGameFiles();
         }
 
         void SmallIcon_DoubleClick(object sender, EventArgs e)
@@ -171,12 +186,10 @@ namespace Launchwares
 
         private void Drag_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left)
-                this.DragMove();
+            if (e.ChangedButton == MouseButton.Left) DragMove();
         }
 
-        private void ExitProgram_MouseDown(object sender, MouseButtonEventArgs e)
-        => this.Close();
+        private void ExitProgram_MouseDown(object sender, MouseButtonEventArgs e) => Close();
 
         private void UpdatesButton_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -235,7 +248,7 @@ namespace Launchwares
         private void PackIcon_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton != MouseButton.Left) return;
-            Process.Start("https://launchwares.com/where-can-i-find-my-discord-uid");
+            Process.Start("https://api.vlastcommunity.net/where-can-i-find-my-discord-uid");
         }
 
         private async void RegisterButton_Click(object sender, RoutedEventArgs e)
@@ -257,7 +270,7 @@ namespace Launchwares
                 else if (User.Message == "Ok") {
                     Properties.Settings.Default.PlayerUID = ulong.Parse(UidTextbox.Text);
                     Properties.Settings.Default.PlayerUsername = NameTextbox.Text;
-                    Properties.Settings.Default.PlayerProfilephotoPath = "https://launchwares.com/img/launchwares.png";
+                    Properties.Settings.Default.PlayerProfilephotoPath = "http://api.vlastcommunity.net/img/vlast.png";
                     Properties.Settings.Default.ManuallyCreated = true;
                     Properties.Settings.Default.Save();
                     Utils.Uid = Properties.Settings.Default.PlayerUID;
@@ -322,5 +335,10 @@ namespace Launchwares
         }
 
         internal static bool IsNumber(string s) => s.All(char.IsDigit);
+
+        //private void LiveServerInfoButton_MouseDown(object sender, MouseButtonEventArgs e)
+        //{
+        //    CreateView(new Views.Moderation.ServerInformation(), LiveServerInfoButton);
+        //}
     }
 }

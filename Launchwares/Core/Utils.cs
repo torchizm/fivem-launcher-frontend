@@ -1,27 +1,21 @@
-﻿using Launchwares.Core.Antihack;
+﻿using Launchwares.Core.Anticheat;
 using Launchwares.Helpers;
-using Launchwares.Properties;
-using LaunchwaresCore;
 using LaunchwaresCore;
 using MaterialDesignThemes.Wpf;
-using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Interop;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Brush = System.Windows.Media.Brush;
-using Brushes = System.Windows.Media.Brushes;
+using MessageBox = System.Windows.Forms.MessageBox;
+using MessageBoxIcon = System.Windows.Forms.MessageBoxIcon;
+using MessageBoxButton = System.Windows.Forms.MessageBoxButtons;
+using FolderBrowserDialog = System.Windows.Forms.FolderBrowserDialog;
+using DialogResult = System.Windows.Forms.DialogResult;
+using FolderDialogResult = System.Windows.Forms.DialogResult;
+using System;
 
 namespace Launchwares.Core
 {
@@ -29,10 +23,11 @@ namespace Launchwares.Core
     {
         internal static Models.Server Server { get; set; }
         public static List<Models.User> Users { get; set; }
-        public static List<Models.Message> MessageCache = new List<Models.Message>();
-        public static List<int> MessageCacheIDs = new List<int>();
+        //public static List<Models.Message> MessageCache = new List<Models.Message>();
+        //public static List<int> MessageCacheIDs = new List<int>();
+        public static List<Models.Hash> Hashes { get; set; }
         public static IList<string> IllegalPrograms { get; set; }
-        public static string Version = "1.0.2.5";
+        public static string Version = "1.0.3.3";
         public static string Username { get; set; }
         public static ulong Uid { get; set; }
         public static string ProfilePhoto { get; set; }
@@ -85,17 +80,95 @@ namespace Launchwares.Core
 
         public static void ClosePrograms()
         {
-            foreach (var proc in Process.GetProcesses())
-                if (proc.ProcessName == "FiveM" ||
-                    proc.ProcessName == "Fivem_ChromeBrowser" ||
-                    proc.ProcessName == "FiveM_DumpServer" ||
-                    proc.ProcessName == "FiveM_GTAProcess" ||
-                    proc.ProcessName == "FiveM_ROSLauncher" ||
-                    proc.ProcessName == "Fivem_ROSService" ||
-                    proc.ProcessName == "FiveM_SteamChild" ||
-                    proc.ProcessName == "ts3client_win64" ||
-                    proc.ProcessName.StartsWith("fivem"))
-                    proc.Kill();
+            foreach (var p in Process.GetProcesses())
+                if (p.ProcessName == "FiveM" ||
+                    p.ProcessName == "Fivem_ChromeBrowser" ||
+                    p.ProcessName == "FiveM_DumpServer" ||
+                    p.ProcessName == "FiveM_GTAProcess" ||
+                    p.ProcessName == "FiveM_ROSLauncher" ||
+                    p.ProcessName == "Fivem_ROSService" ||
+                    p.ProcessName == "FiveM_SteamChild" ||
+                    p.ProcessName == "ts3client_win64" ||
+                    p.ProcessName.ToLower().StartsWith("fivem"))
+                    p.Kill();
+        }
+
+        private static void SetLocation(string path, string type)
+        {
+            if (type == "gtav") {
+                Properties.Settings.Default.Location_GtaV = path;
+                Properties.Settings.Default.Save();
+            }
+            else if (type == "fivem") {
+                Properties.Settings.Default.Location_FiveM = path;
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        public static bool SetFivemLocation()
+        {
+            bool retval = false;
+            string result = "";
+
+            var dlg = new FolderPicker();
+            dlg.InputPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            dlg.OkButtonLabel = $"{Application.Current.Resources["dialogs.select-folder"]}";
+            dlg.Title = $"{Application.Current.Resources["dialogs.select-folder"]}";
+
+            if (dlg.ShowDialog() == true) {
+                result = dlg.ResultPath;
+            } else {
+                ClosePrograms();
+                Environment.Exit(0);
+            }
+
+            if (result != "") {
+                var f = new FileInfo($@"{result}\FiveM.exe");
+
+                if (f.Exists) {
+                    var dataPath = Path.Combine(result, "FiveM.app", "citizen", "common", "data");
+                    DirectoryInfo d = new DirectoryInfo(dataPath);
+
+                    if (d.Exists) {
+                        SetLocation(result, "fivem");
+                        return true;
+                    }
+                }
+                else {
+                    MessageBox.Show($"{Application.Current.Resources["mainmenu.nofivematlocation"]}",
+                                    $"{Application.Current.Resources["application.title"]}",
+                                    MessageBoxButton.OK,
+                                    MessageBoxIcon.Error);
+                }
+            }
+
+            return retval;
+        }
+
+        public static void SetGtaVLocation()
+        {
+            FolderBrowserDialog gtavlocation = new FolderBrowserDialog() {
+                Description = $"{Application.Current.Resources["mainmenu.selectgtavlocation"]}"
+            };
+            var result = gtavlocation.ShowDialog();
+            if (result == DialogResult.OK)
+                if (File.Exists($@"{gtavlocation.SelectedPath}\GTA5.exe"))
+                    SetLocation(gtavlocation.SelectedPath, "gtav");
+                else
+                    MessageBox.Show($"{Application.Current.Resources["mainmenu.nogtavatlocation"]}",
+                                    $"{Application.Current.Resources["application.title"]}",
+                                    MessageBoxButton.OK,
+                                    MessageBoxIcon.Error);
+        }
+
+        public static List<string> GetTags()
+        {
+            return new List<string> {
+                "qb",
+                "policejob",
+                "highFps",
+                "lowPing"
+            };
         }
     }
 }

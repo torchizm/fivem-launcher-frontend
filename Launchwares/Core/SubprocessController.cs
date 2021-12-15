@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace Launchwares.Core
 {
@@ -37,13 +33,12 @@ namespace Launchwares.Core
                 if (args.Data != null) OutputDataReceived(sender, args);
             };
 
-            string stdError = null;
             try {
                 process.Start();
                 process.BeginOutputReadLine();
             }
             catch (Exception) {
-                
+
             }
         }
     }
