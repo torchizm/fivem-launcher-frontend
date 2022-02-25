@@ -158,11 +158,9 @@ namespace Launchwares
             else
                 Badge.Kind = Utils.GetBadge(Utils.UserType);
 
-            AdministrationArea.Visibility = Visibility.Visible;
-            //AdministrationArea.Visibility = (Utils.UserType >= Models.UserType.Guider) ? Visibility.Visible : Visibility.Hidden;
+            AdministrationArea.Visibility = (Utils.UserType >= Models.UserType.Guider) ? Visibility.Visible : Visibility.Hidden;
             Utils.Server = await API.client.Get<Models.Server>($"server/{API.client.Token.slug}");
-
-            //ThemeHelper.SetTheme((ThemeHelper.Theme)Utils.Server.ThemeIndex, false);
+            ThemeHelper.SetTheme((ThemeHelper.Theme)Utils.Server.ThemeIndex, false);
 
             SelectedStackpanel = HomepageButton;
             this.Dispatcher.Invoke(delegate
