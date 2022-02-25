@@ -7,7 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Launchwares", "Launchwares\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchwaresSubprocess", "LaunchwaresSubprocess\LaunchwaresSubprocess.csproj", "{FD2331BF-221F-4650-A73B-C3C4FBDA88B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchwaresCore", "..\launchwarescslibrary\LaunchwaresCore\LaunchwaresCore.csproj", "{8F596566-8D41-4AB3-9C56-ADB62EF1DD21}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchwaresCore", "LaunchwaresCore\LaunchwaresCore.csproj", "{8F596566-8D41-4AB3-9C56-ADB62EF1DD21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaunchwaresTestApplication", "LaunchwaresTestApplication\LaunchwaresTestApplication.csproj", "{6C76079C-57F4-40C0-87BA-315B35EB2155}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,22 @@ Global
 		{8F596566-8D41-4AB3-9C56-ADB62EF1DD21}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F596566-8D41-4AB3-9C56-ADB62EF1DD21}.Release|x86.ActiveCfg = Release|Any CPU
 		{8F596566-8D41-4AB3-9C56-ADB62EF1DD21}.Release|x86.Build.0 = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Beta|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Beta|Any CPU.Build.0 = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Beta|x86.ActiveCfg = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Beta|x86.Build.0 = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Debug|x86.Build.0 = Debug|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.ReadyToPublish|Any CPU.ActiveCfg = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.ReadyToPublish|Any CPU.Build.0 = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.ReadyToPublish|x86.ActiveCfg = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.ReadyToPublish|x86.Build.0 = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Release|x86.ActiveCfg = Release|Any CPU
+		{6C76079C-57F4-40C0-87BA-315B35EB2155}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

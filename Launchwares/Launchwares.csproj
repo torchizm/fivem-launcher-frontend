@@ -604,7 +604,7 @@
     <None Include="Resources\Logo.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\launchwarescslibrary\LaunchwaresCore\LaunchwaresCore.csproj">
+    <ProjectReference Include="..\LaunchwaresCore\LaunchwaresCore.csproj">
       <Project>{8F596566-8D41-4AB3-9C56-ADB62EF1DD21}</Project>
       <Name>LaunchwaresCore</Name>
     </ProjectReference>

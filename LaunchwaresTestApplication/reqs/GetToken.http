@@ -1,0 +1,5 @@
+POST http://127.0.0.1:8000/api/launcher_login?launcherToken=pLTj2TY9AjwTpcs44yIgqdwtxaLQ9Fc9&uid=308663175564492810&uname=TORCHIZM&pp=http://127.0.0.1:8000/storage/logos/3CEbRhFEqAzfg3994z4D96DAto3ndHVAzP8vj74L.png&status=1 HTTP/2.0
+
+
+GET http://127.0.0.1:8000/api/server/X1yp9VJrRWoA HTTP/2.0
+Authorization: "Bearer BHE8S9MbbUEZZieMoFUo1yKOVgkSNxNmIGbhw0C8jGwJ8qAr64LuYpxfhcIs5rks"

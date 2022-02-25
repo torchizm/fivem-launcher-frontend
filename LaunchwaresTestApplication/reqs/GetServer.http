@@ -1,0 +1,8 @@
+GET http://127.0.0.1:8000/api/player/X1yp9VJrRWoA?player=308663175564492810 HTTP/2.0
+Authorization: Bearer mZE6fiAmWEvI0Z5l3xwV9mgABHH1LZaMWEqUhWak2aFGdGewD0DSEIFlftF1bIGO
+
+GET http://127.0.0.1:8000/api/server/X1yp9VJrRWoA HTTP/2.0
+Authorization: Bearer IEAgtWKWiizPBo6x1yX5muxt17D35WsSWLPIC5YaX5Eo8gIuBJMklpvlNODhEwAa
+
+
+
