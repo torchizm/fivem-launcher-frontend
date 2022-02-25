@@ -196,7 +196,7 @@
 
     <system:String x:Key="anticheat.cheatdetected">Hile Algılandı %CheatName%</system:String>
     <system:String x:Key="anticheat.information">Oh olamaz! Hile tespit ettik. Hile açtığına inanamıyorum :(, ne yazık ki hile bilgilerini veritabanımıza gönderdik ve hileyi engelledik. Umarız bu birdaha yaşanmaz.</system:String>
-    <system:String x:Key="anticheat.foundillegalfiles">Kurallar sekmemizi açıp 1.12 kuralını inceleyebilirsin yeteneksiz (%FileNames%)</system:String>
+    <system:String x:Key="anticheat.foundillegalfiles">Illegal dosyalar bulundu (%FileNames%)</system:String>
     
     <system:String x:Key="dialogs.select-folder">Klasörü Seç</system:String>
 </ResourceDictionary>

@@ -169,8 +169,6 @@ namespace Launchwares.Core
         {
             var user = await API.client.Get<Models.User>($"player/{API.client.Token.slug}?player={Utils.Uid}");
 
-            MessageBox.Show(JsonConvert.SerializeObject(user));
-
             Utils.Status = (Models.Status)user.Status;
             Utils.UserType = (Models.UserType)user.Usertype;
             Utils.Whitelist = user.Whitelist;

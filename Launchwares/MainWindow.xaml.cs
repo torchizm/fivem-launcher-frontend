@@ -158,6 +158,7 @@ namespace Launchwares
             else
                 Badge.Kind = Utils.GetBadge(Utils.UserType);
 
+            //System.Windows.Forms.MessageBox.Show(((int)Utils.UserType).ToString());
             AdministrationArea.Visibility = (Utils.UserType >= Models.UserType.Guider) ? Visibility.Visible : Visibility.Hidden;
             Utils.Server = await API.client.Get<Models.Server>($"server/{API.client.Token.slug}");
             ThemeHelper.SetTheme((ThemeHelper.Theme)Utils.Server.ThemeIndex, false);

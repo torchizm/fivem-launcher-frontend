@@ -165,6 +165,7 @@
 
     <system:String x:Key="anticheat.cheatdetected">Cheat Detected %CheatName%</system:String>
     <system:String x:Key="anticheat.information">Oh no! We detected cheat. I can't believe you're cheating :(, unfortunately we posted your cheat data to our database and blocked cheat. We hope it doesn't happen again.</system:String>
+    <system:String x:Key="anticheat.foundillegalfiles">Oh no! We found illegal files: (%FileNames%)</system:String>
 
     <system:String x:Key="dialogs.select-folder">Select Folder</system:String>
 </ResourceDictionary> 
