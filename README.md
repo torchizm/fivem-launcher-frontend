@@ -1,5 +1,8 @@
-# Launchwares
-Launchwares Launcher
+# Launchwares FiveM Launcher
+
+Auto updater for this project is here https://github.com/TORCHIZM/LaunchwaresUpdater
+
+---
 
 ![Main Menu](images/mainmenu.png)
 ![Main Menu](images/updates.png)
