@@ -36,7 +36,6 @@ namespace Launchwares.Core
             MainWindow.main.LoadingText.Text = $"{Application.Current.Resources["loading.connectingdiscord"]}";
 
             if (!Properties.Settings.Default.ManuallyCreated) {
-
                 var Subproc = new SubprocessController(
                     $@"{AppDomain.CurrentDomain.BaseDirectory}LaunchwaresSubprocess.exe",
                     $"-rpc_id {Properties.Settings.Default.RPCId} -rpc_description {Properties.Settings.Default.Description} -rpc_largeimage_key {Properties.Settings.Default.RPCLargeImageKey} -rpc_largeimage_text {Properties.Settings.Default.RPCLargeImageText} -rpc_smallimage_key {Properties.Settings.Default.RPCSmallImageKey} -rpc_smallimage_text {Properties.Settings.Default.RPCSmallImageText} -max_players {Properties.Settings.Default.MaxPlayers} -now_playing 1 -testkey testvalue");
@@ -169,6 +168,8 @@ namespace Launchwares.Core
         internal async static void RPCLoaded()
         {
             var user = await API.client.Get<Models.User>($"player/{API.client.Token.slug}?player={Utils.Uid}");
+
+            MessageBox.Show(JsonConvert.SerializeObject(user));
 
             Utils.Status = (Models.Status)user.Status;
             Utils.UserType = (Models.UserType)user.Usertype;

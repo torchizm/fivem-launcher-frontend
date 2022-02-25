@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using System.Resources;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Windows;
 
 // Bir bütünleştirilmiş koda ilişkin Genel Bilgiler aşağıdaki öznitelikler kümesiyle
