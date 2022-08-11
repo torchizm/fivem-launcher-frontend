@@ -2,10 +2,6 @@
 using LaunchwaresSubprocess.Models;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LaunchwaresSubprocess
 {
@@ -34,12 +30,14 @@ namespace LaunchwaresSubprocess
             LoadDiscordRPC();
         }
 
-        public Secrets secrets = new Secrets() {
+        public Secrets secrets = new Secrets()
+        {
             JoinSecret = "MTI4NzM0OjFpMmhuZToxMjMxMjM= ",
             SpectateSecret = "MTIzNDV8MTIzNDV8MTMyNDU0"
         };
 
-        public Timestamps timestamps = new Timestamps() {
+        public Timestamps timestamps = new Timestamps()
+        {
             Start = DateTime.UtcNow
         };
 
@@ -49,7 +47,8 @@ namespace LaunchwaresSubprocess
 
             _Client.Initialize();
 
-            Party party = new Party() {
+            Party party = new Party()
+            {
                 ID = Secrets.CreateFriendlySecret(new Random()),
                 Size = _NowPlaying,
                 Max = _MaxPlayers
@@ -58,10 +57,12 @@ namespace LaunchwaresSubprocess
             _Client.RegisterUriScheme("701972390187499650");
             _Client.SetSubscription(EventType.Join | EventType.Spectate | EventType.JoinRequest);
 
-            _Client.SetPresence(new RichPresence() {
+            _Client.SetPresence(new RichPresence()
+            {
                 Details = _RpcDescription,
                 State = "Launcher",
-                Assets = new Assets() {
+                Assets = new Assets()
+                {
                     LargeImageKey = _LargeImageKey,
                     LargeImageText = _LargeImageText,
                     SmallImageKey = _SmallImageKey,
@@ -75,23 +76,27 @@ namespace LaunchwaresSubprocess
             _Client.OnReady += Client_OnReady;
         }
 
-        public void Client_OnReady(object sender, DiscordRPC.Message.ReadyMessage args) => Console.WriteLine(JsonConvert.SerializeObject(new DiscordOutput(_Client.CurrentUser)));
+        public void Client_OnReady(object sender, DiscordRPC.Message.ReadyMessage args) =>
+            Console.WriteLine(JsonConvert.SerializeObject(new DiscordOutput(_Client.CurrentUser)));
 
         public void UpdatePresence()
         {
             _Client.RegisterUriScheme(executable: $@"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\Fivem\FiveM.exe");
             _Client.SetSubscription(EventType.Join | EventType.Spectate);
 
-            Party party = new Party() {
+            Party party = new Party()
+            {
                 ID = Secrets.CreateFriendlySecret(new Random()),
                 Size = _NowPlaying,
                 Max = _MaxPlayers
             };
 
-            _Client.SetPresence(new RichPresence() {
+            _Client.SetPresence(new RichPresence()
+            {
                 Details = _RpcDescription,
                 State = "Launcher",
-                Assets = new Assets() {
+                Assets = new Assets()
+                {
                     LargeImageKey = _LargeImageKey,
                     LargeImageText = _LargeImageText,
                     SmallImageKey = _SmallImageKey,

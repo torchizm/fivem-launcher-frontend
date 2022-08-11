@@ -176,6 +176,7 @@ namespace Launchwares.Core
             MainWindow.main.UsernameLabel.Text = Utils.Username;
             MainWindow.main.UserPhoto.ImageSource = ImageHelper.ConvertPhoto(Utils.ProfilePhoto);
             Utils.Users = await API.client.Get<List<Models.User>>($"players/{API.client.Token.slug}");
+            MainWindow.main.LauncherLoaded();
         }
 
         public static void DetectFiles()
@@ -189,20 +190,18 @@ namespace Launchwares.Core
                 if (File.Exists(fileFullLocation)) {
                     while (true)
                         if (Utils.SetFivemLocation()) {
-                            MainWindow.main.LauncherLoaded();
+                            RPCLoaded();
                             break;
                         }
                 }
-            } else {
+            }
+            else {
                 var f = new FileInfo($@"{Properties.Settings.Default.Location_FiveM}\FiveM.exe");
 
-                if (f.Exists && f.Length > (Utils.Server.ByteCount - 20000) && f.Length < Utils.Server.ByteCount + 20000) {
-                    MainWindow.main.LauncherLoaded();
-                }
-                else {
+                if (!(f.Exists && f.Length > (Utils.Server.ByteCount - 20000) && f.Length < Utils.Server.ByteCount + 20000)) {
                     while (true) {
                         if (Utils.SetFivemLocation()) {
-                            MainWindow.main.LauncherLoaded();
+                            RPCLoaded();
                             break;
                         }
                     }

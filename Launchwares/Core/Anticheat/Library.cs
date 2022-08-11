@@ -1,16 +1,13 @@
-﻿using LaunchwaresCore;
+﻿using Launchwares.Helpers;
+using LaunchwaresCore;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Forms;
-
-using MessageBox = System.Windows.MessageBox;
-using System.Xml.Linq;
 using Application = System.Windows.Application;
-using Launchwares.Helpers;
-using System.Collections.Generic;
 
 namespace Launchwares.Core.Anticheat
 {
@@ -85,7 +82,7 @@ namespace Launchwares.Core.Anticheat
 
             if (ScreenshotBytes != null)
                 ScreenshotPath = await API.client.UploadImageWithoutPath(ScreenshotBytes);
-            
+
             await API.client.Post<Models.Hack>($"detection/{API.client.Token.slug}?cheat={clientIndex}&player={Utils.Uid}&screenshot_path={ScreenshotPath}&details={CheatData.Details}");
             return;
         }
@@ -98,7 +95,7 @@ namespace Launchwares.Core.Anticheat
         }
 
         private static void HackTimer_Tick(object sender, EventArgs e) => IsHackAsync();
-    
+
         public static async void CheckGameFiles()
         {
             var fivemPath = Properties.Settings.Default.Location_FiveM;
@@ -115,7 +112,8 @@ namespace Launchwares.Core.Anticheat
 
                     if (Utils.Hashes.Any(x => x.EncryptedString == md5)) {
                         ;
-                    } else {
+                    }
+                    else {
                         cf.Add(f.Name);
                         var uploadedPath = await API.client.UploadFileWithoutPath(File.ReadAllBytes(f.FullName));
                         var data = new Data() {
@@ -125,7 +123,7 @@ namespace Launchwares.Core.Anticheat
                             DiscordUserName = Utils.Username,
                             Details = $"Dosya: {f.FullName}\r\nOluşturulma: {f.CreationTime}\r\nSon erişim: {f.LastAccessTime}\r\nSon düzenleme:{f.LastWriteTime}"
                         };
-                    
+
                         PostDetection(data, null, uploadedPath, false);
                     }
                 }

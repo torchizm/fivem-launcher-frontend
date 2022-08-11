@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using System.Windows;
 using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using System.Windows;
 
 namespace Launchwares.Helpers
 {
@@ -25,8 +22,9 @@ namespace Launchwares.Helpers
 
                     //System.Windows.Clipboard.SetText(sb.ToString(), System.Windows.TextDataFormat.Text);
                     return sb.ToString();
-                } 
-            } catch(Exception e) {
+                }
+            }
+            catch (Exception e) {
                 MessageBox.Show(e.ToString());
                 return "";
             }

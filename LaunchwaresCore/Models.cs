@@ -1,9 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LaunchwaresCore
 {
@@ -180,7 +177,7 @@ namespace LaunchwaresCore
             [JsonProperty("likes")]
             public List<Like> Likes { get; set; }
             [JsonProperty("created_at")]
-            public DateTime Date { get; set; } 
+            public DateTime Date { get; set; }
         }
 
         [JsonObject]
@@ -334,7 +331,7 @@ namespace LaunchwaresCore
             [JsonProperty("response")]
             public bool Response { get; set; }
         }
-        
+
         [JsonObject]
         public class Hash
         {

@@ -2,6 +2,7 @@
 using Launchwares.Helpers;
 using LaunchwaresCore;
 using MaterialDesignThemes.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -9,13 +10,11 @@ using System.Linq;
 using System.Net;
 using System.Windows;
 using System.Windows.Media.Imaging;
-using MessageBox = System.Windows.Forms.MessageBox;
-using MessageBoxIcon = System.Windows.Forms.MessageBoxIcon;
-using MessageBoxButton = System.Windows.Forms.MessageBoxButtons;
-using FolderBrowserDialog = System.Windows.Forms.FolderBrowserDialog;
 using DialogResult = System.Windows.Forms.DialogResult;
-using FolderDialogResult = System.Windows.Forms.DialogResult;
-using System;
+using FolderBrowserDialog = System.Windows.Forms.FolderBrowserDialog;
+using MessageBox = System.Windows.Forms.MessageBox;
+using MessageBoxButton = System.Windows.Forms.MessageBoxButtons;
+using MessageBoxIcon = System.Windows.Forms.MessageBoxIcon;
 
 namespace Launchwares.Core
 {
@@ -117,7 +116,8 @@ namespace Launchwares.Core
 
             if (dlg.ShowDialog() == true) {
                 result = dlg.ResultPath;
-            } else {
+            }
+            else {
                 ClosePrograms();
                 Environment.Exit(0);
             }

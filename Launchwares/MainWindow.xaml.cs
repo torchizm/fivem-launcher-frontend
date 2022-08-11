@@ -1,9 +1,9 @@
 ﻿using Launchwares.AnimationHelpers;
 using Launchwares.Core;
 using Launchwares.Helpers;
+using Launchwares.LanguageHelper;
 using Launchwares.Resources.Design;
 using Launchwares.Views;
-using Launchwares.LanguageHelper;
 using LaunchwaresCore;
 using System;
 using System.Collections.Generic;
@@ -72,7 +72,8 @@ namespace Launchwares
                     dict.Source = new Uri($@"..\Resources\Locales\Locale.{Language}.xaml", UriKind.Relative);
                     Properties.Settings.Default.Language = Language;
                     Properties.Settings.Default.Save();
-                } else {
+                }
+                else {
                     if (String.IsNullOrWhiteSpace(data)) {
                         data = "tr-TR";
                         Properties.Settings.Default.Language = data;

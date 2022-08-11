@@ -7,7 +7,6 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
@@ -15,7 +14,6 @@ using System.Threading.Tasks;
 using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Forms;
 using System.Windows.Media;
 using Cursors = System.Windows.Input.Cursors;
 using MessageBox = System.Windows.MessageBox;
@@ -155,10 +153,10 @@ namespace Launchwares.Views
                     var whitelist = await API.client.CustomPost<Models.GetResponse>($"https://whitelist.vlastcommunity.net/api/check_whitelist?uid={Utils.Uid}");
 
                     if (whitelist.Response == false) {
-                            MessageBox.Show("Bu sunucuda oynamak için whitelist yetkiniz yok.",
-                                $"{System.Windows.Application.Current.Resources["application.title"]}",
-                                MessageBoxButton.OK,
-                                MessageBoxIcon.Exclamation);
+                        MessageBox.Show("Bu sunucuda oynamak için whitelist yetkiniz yok.",
+                            $"{System.Windows.Application.Current.Resources["application.title"]}",
+                            MessageBoxButton.OK,
+                            MessageBoxIcon.Exclamation);
                         return;
                     }
                     else {

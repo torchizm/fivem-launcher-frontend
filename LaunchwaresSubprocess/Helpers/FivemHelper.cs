@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
-using System.Windows;
 
 namespace LaunchwaresSubprocess.Helpers
 {
     internal static class FivemHelper
     {
-        internal static Timer FivemTimer = new Timer() {
+        internal static Timer FivemTimer = new Timer()
+        {
             Interval = 5000
         };
 
@@ -24,13 +20,16 @@ namespace LaunchwaresSubprocess.Helpers
         private static void FivemTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             bool launcherdetect = false;
-            foreach (var Process in Process.GetProcesses()) {
-                if (Process.ProcessName.ToLower() == "launchwares") {
+            foreach (var Process in Process.GetProcesses())
+            {
+                if (Process.ProcessName.ToLower() == "launchwares")
+                {
                     launcherdetect = true;
                 }
             }
 
-            if (!launcherdetect) {
+            if (!launcherdetect)
+            {
                 foreach (var proc in Process.GetProcesses())
                     if (proc.ProcessName == "FiveM" ||
                         proc.ProcessName == "Fivem_ChromeBrowser" ||
@@ -41,7 +40,8 @@ namespace LaunchwaresSubprocess.Helpers
                         proc.ProcessName == "FiveM_SteamChild" ||
                         proc.ProcessName == "ts3client_win64" ||
                         proc.ProcessName.StartsWith("fivem") ||
-                        proc.ProcessName.ToLower() == "launchwares") {
+                        proc.ProcessName.ToLower() == "launchwares")
+                    {
                         proc.Kill();
                     }
 

@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
 
 namespace LaunchwaresSubprocess.Helpers
 {
@@ -27,7 +22,8 @@ namespace LaunchwaresSubprocess.Helpers
             if (!_Args.Contains(key)) return "Input could not found.";
 
             string raw = "";
-            _Args.ForEach(x => {
+            _Args.ForEach(x =>
+            {
                 raw += $"{x} ";
             });
             var matched = Regex.Match(raw, $"(?<={key} ).*?(?= -)").Value ?? "Input could not found.";

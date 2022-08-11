@@ -6,7 +6,7 @@ namespace Launchwares.Core
 {
     public static class API
     {
-        internal static string Token { get; private set; } = "gVcJNXMuSSkLQTw4Jb6knAW8FMXVzEma";
+        internal static string Token { get; private set; } = "pLTj2TY9AjwTpcs44yIgqdwtxaLQ9Fc9";
         internal static Database client = new Database(Token);
 
         internal static async void GetToken()

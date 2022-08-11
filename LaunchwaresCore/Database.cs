@@ -1,14 +1,8 @@
-﻿using System;
-using System.Net.Http;
-using Newtonsoft.Json;
-using System.Threading.Tasks;
-using System.Net;
-using System.Windows.Forms;
-using System.Net.WebSockets;
-using LaunchwaresCore;
-using System.Security.Cryptography.X509Certificates;
-using System.Deployment.Internal;
+﻿using Newtonsoft.Json;
+using System;
 using System.IO;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace LaunchwaresCore
 {
@@ -44,7 +38,7 @@ namespace LaunchwaresCore
         /// </summary>
         /// <param name="LauncherToken">Launcher Token from www.launchwares.com</param>
         public Database(string LauncherToken) => this.LauncherToken = LauncherToken;
-        
+
         /// <summary>
         /// Developer Constructor
         /// </summary>
@@ -71,7 +65,8 @@ namespace LaunchwaresCore
             if (this.ProtectedLauncherToken == "" || username == null || id == 0 || profilePhoto == null) return null;
             var token = await Post<Models.Token>($"launcher_login?launcherToken={ProtectedLauncherToken}&uid={id}&uname={username}&pp={profilePhoto}&status={(int)status}");
 
-            if (token.api_token == null || token.api_token == "") return new Models.Token() { 
+            if (token.api_token == null || token.api_token == "") return new Models.Token()
+            {
                 api_token = "null",
                 slug = "null",
                 version = "null",
@@ -180,7 +175,7 @@ namespace LaunchwaresCore
         public async Task<T> Post<T>(string path)
         {
             var request = new HttpRequestMessage(new HttpMethod("POST"), $"{ApiPath}/{path}");
-            
+
             if (Token != null && Token.api_token != "") request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {Token.api_token}");
 
             var response = await Client.SendAsync(request);
@@ -337,7 +332,7 @@ namespace LaunchwaresCore
             var httpClient = new HttpClient();
             var request = new HttpRequestMessage(new HttpMethod("POST"), $"{ApiPath}/photo/upload");
             if (Token != null && Token.api_token != "") request.Headers.TryAddWithoutValidation("Authorization", $"Bearer {Token.api_token}");
-            
+
             var multipartContent = new MultipartFormDataContent();
             multipartContent.Add(new ByteArrayContent(File.ReadAllBytes(path)), "image", Path.GetFileName(path));
             request.Content = multipartContent;
@@ -353,7 +348,7 @@ namespace LaunchwaresCore
             catch { }
 
             var file = JsonConvert.DeserializeObject<Models.FileModel>(message);
-            return $"{ApiPath.Substring(0, ApiPath.Length -3)}storage/{file.Path}";
+            return $"{ApiPath.Substring(0, ApiPath.Length - 3)}storage/{file.Path}";
         }
 
         /// <summary>
@@ -382,7 +377,7 @@ namespace LaunchwaresCore
             catch { }
 
             var file = JsonConvert.DeserializeObject<Models.FileModel>(message);
-            return $"{ApiPath.Substring(0, ApiPath.Length -3)}storage/{file.Path}";
+            return $"{ApiPath.Substring(0, ApiPath.Length - 3)}storage/{file.Path}";
         }
 
         public async Task<string> UploadImageWithoutPath(byte[] bytes)
@@ -409,7 +404,7 @@ namespace LaunchwaresCore
             var file = JsonConvert.DeserializeObject<Models.FileModel>(message);
             return $"{ApiPath.Substring(0, ApiPath.Length - 3)}storage/{file.Path}";
         }
-        
+
         /// <summary>
         /// 
         /// </summary>
@@ -487,7 +482,8 @@ namespace LaunchwaresCore
             if (Message != null || Message != "") msg += Message;
             if (Code != ErrorCode.None) msg += $"\nError: {Error.FromErrorCode(Code)} ({(int)Code})";
 
-            if (msg != null && msg != "") {
+            if (msg != null && msg != "")
+            {
                 Console.BackgroundColor = ConsoleColor.Red;
                 Console.WriteLine(msg);
                 Console.ResetColor();

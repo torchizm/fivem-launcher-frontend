@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
 
 namespace LaunchwaresCore
 {
@@ -41,7 +37,7 @@ namespace LaunchwaresCore
             { ErrorCode.Whitelist, true }
         };
 
-        public static bool IsCritical (ErrorCode code)
+        public static bool IsCritical(ErrorCode code)
         {
             return Critical.Where(x => x.Key == code).Select(x => x.Value).FirstOrDefault();
         }
@@ -54,8 +50,8 @@ namespace LaunchwaresCore
         public static string FromErrorCode(ErrorCode code)
         {
             return (from message in Codes
-                   where message.Value == code
-                   select message.Key).FirstOrDefault() ?? "Unknown";
+                    where message.Value == code
+                    select message.Key).FirstOrDefault() ?? "Unknown";
         }
     }
 

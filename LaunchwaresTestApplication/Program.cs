@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using LaunchwaresCore;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using LaunchwaresCore;
 
 namespace LaunchwaresTestApplication
 {
@@ -21,7 +18,7 @@ namespace LaunchwaresTestApplication
 
             Console.ReadKey();
         }
-        
+
         //private static async void saas()
         //{
         //    Console.WriteLine($"{a.Message}");

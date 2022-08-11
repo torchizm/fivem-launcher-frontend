@@ -23,7 +23,8 @@ namespace Launchwares.CustomElements
                 Player = Utils.Users.Where(x => x.Uid == Cheat.Player).FirstOrDefault();
                 SuspectImage.ImageSource = ImageHelper.ConvertPhoto(Player.Profile_photo);
                 SuspectUsername.Text = Player.Username;
-            } catch (Exception) {
+            }
+            catch (Exception) {
                 SuspectImage.ImageSource = ImageHelper.ConvertPhoto("http://api.vlastcommunity.net/img/vlast.png");
                 SuspectUsername.Text = $"{Application.Current.Resources["players.unknown"]}";
             }
@@ -38,7 +39,7 @@ namespace Launchwares.CustomElements
                 DetailsText.Visibility = Visibility.Visible;
                 DetailsText.Text = Cheat.Details;
             }
-            
+
             DateText.Text = Cheat.Date.ToString();
 
             if (Cheat.Image != null && Cheat.Image != "" && (
@@ -46,7 +47,8 @@ namespace Launchwares.CustomElements
                 )) {
                 this.UrlSource = Cheat.Image;
                 PhotoSource.ImageSource = ImageHelper.ConvertPhoto(Cheat.Image);
-            } else {
+            }
+            else {
                 PhotoContainer.Visibility = Visibility.Collapsed;
             }
         }
